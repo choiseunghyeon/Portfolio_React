@@ -1,0 +1,30 @@
+{
+  "developerInfo": {
+    "title": "Front End Developer",
+    "subTitle": "최승현",
+    "content": "안녕하세요 개발을 사랑하는 최승현입니다.",
+    "icons": [{ "href": "https://github.com/choiseunghyeon/" }]
+  },
+  "projectInfo": [
+    {
+      "title": "오늘 뭐 먹지?",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod"
+    },
+    {
+      "title": "Smart Mirror",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod"
+    },
+    {
+      "title": "Portfolio",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod"
+    },
+    {
+      "title": "Project title",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod"
+    },
+    {
+      "title": "test title",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod"
+    }
+  ]
+}
