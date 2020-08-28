@@ -8,10 +8,11 @@ import {
   CardMedia,
   Button,
   Typography,
+  Icon,
 } from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import { makeStyles } from "@material-ui/core/styles";
-import test from "../../styles/images/test.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Anchor from "./Anchor";
 
 const useStyles = makeStyles({
@@ -26,14 +27,14 @@ const useStyles = makeStyles({
 const ProjectCardItem = React.memo(({ item }) => {
   const classes = useStyles();
   //const {title, description, imgSrc, iconSrc} = item;
-  const { title, description } = item;
+  const { title, description, icons, imageSrc } = item;
   return (
     <Grid item xs={12} md={3} variant="outlined">
       <Card>
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={test}
+            image={imageSrc}
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -46,16 +47,14 @@ const ProjectCardItem = React.memo(({ item }) => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Anchor href="https://github.com/choiseunghyeon/">
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              startIcon={<GitHubIcon />}
-            >
-              github
-            </Button>
-          </Anchor>
+          {icons &&
+            icons.map((icon, idx) => (
+              <Anchor
+                key={idx}
+                href={icon.href}
+                icon={<FontAwesomeIcon icon={["fab", icon.icon]} size="2x" />}
+              />
+            ))}
         </CardActions>
       </Card>
     </Grid>

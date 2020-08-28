@@ -1,11 +1,9 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import logo from "../logo.svg";
 import Anchor from "./common/Anchor";
-import { developerInfo } from "../info.json";
+import { developerInfo } from "../config/GlobalVariables";
 
 const useStyles = makeStyles((theme) => ({
   textAlignCenter: { textAlign: "center" },
@@ -18,10 +16,15 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2rem",
     color: "white",
   },
+  image: {
+    maxWidth: "120px",
+    borderRadius: "50%",
+  },
 }));
 
 const DeveloperInfo = () => {
-  const { title, subTitle, content } = developerInfo;
+  const { title, subTitle, content, icons, imageSrc } = developerInfo;
+  console.log(developerInfo);
   const classes = useStyles();
   return (
     <div className={classes.textAlignCenter}>
@@ -33,7 +36,7 @@ const DeveloperInfo = () => {
         spacing={1}
       >
         <Grid item xs={12} className={classes.marginLeftRight}>
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={imageSrc} className={classes.image} alt="person" />
         </Grid>
         <Grid item xs={12} className={classes.marginLeftRight}>
           <Typography color="textSecondary" gutterBottom>
@@ -48,25 +51,14 @@ const DeveloperInfo = () => {
         <Grid item xs={12} className={classes.marginLeftRight}>
           <Typography variant="body1">{content}</Typography>
         </Grid>
-
-        <Grid item xs={4}>
-          <Anchor
-            href="https://github.com/choiseunghyeon/"
-            icon={<GitHubIcon />}
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <Anchor
-            href="https://webigotr.tistory.com/"
-            icon={<FontAwesomeIcon icon={["fab", "blogger-b"]} />}
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <Anchor
-            href="https://www.instagram.com/chshyeon_0_0/?hl=ko"
-            icon={<InstagramIcon />}
-          />
-        </Grid>
+        {icons.map((icon, idx) => (
+          <Grid item xs={4} key={idx}>
+            <Anchor
+              href={icon.href}
+              icon={<FontAwesomeIcon icon={["fab", icon.icon]} />}
+            />
+          </Grid>
+        ))}
       </Grid>
       <Divider />
     </div>

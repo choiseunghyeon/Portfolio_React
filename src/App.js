@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
@@ -14,7 +13,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import VerticalTabs from "./components/VerticalTabs";
 
@@ -34,10 +33,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      backgroundColor: "#454545",
     },
   },
-  menuButton: {
+  accountButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
       display: "none",
@@ -54,24 +52,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App({ window }) {
+function App() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   const handleDrawerToggle = (windowWidth) => {
     // 현재 윈도우 크기가 breakpoints보다 크면 toggle 기능 차단
     // mobile page에서 메뉴 선택 후 토글 하기 위함
     if (windowWidth > theme.breakpoints.width("sm")) return;
     setMobileOpen(!mobileOpen);
   };
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div className={classes.root}>
@@ -83,9 +73,9 @@ function App({ window }) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            className={classes.menuButton}
+            className={classes.accountButton}
           >
-            <MenuIcon />
+            <AccountCircle fontSize="large" />
           </IconButton>
           <Typography variant="h5">포트폴리오</Typography>
         </Toolbar>
@@ -94,7 +84,6 @@ function App({ window }) {
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
-            container={container}
             variant="temporary"
             anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
@@ -126,7 +115,7 @@ function App({ window }) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route path="/home" component={HomePage} exact />
+          <Route path={["/", "/home"]} component={HomePage} exact />
           <Route path="/project" component={ProjectPage} />
           <Route path="/skills" component={SkillsPage} />
           <Route
@@ -139,13 +128,5 @@ function App({ window }) {
     </div>
   );
 }
-
-App.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
 export default App;
