@@ -12,12 +12,13 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import SkillFuncItems from "./SkillFuncItems";
 import Anchor from "./Anchor";
 
 const useStyles = makeStyles({
   media: {
-    height: "280px",
+    height: "240px",
+    objectFit: "contain",
   },
   borderNone: {
     textDecoration: "none",
@@ -32,9 +33,8 @@ const useStyles = makeStyles({
     marginBlockStart: 0,
   },
   imageContainer: {
-    width: "80%",
-    boxShadow:
-      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    border: "1px solid #fff",
+    height: "240px",
   },
 });
 
@@ -45,26 +45,23 @@ const ProjectCardItem = React.memo(({ item }) => {
   return (
     <Grid item xs={12} md={3} variant="outlined">
       <Card>
-        {/* <div className={classes.imageContainer}>
-          </div> */}
         <CardMedia
+          component="img"
+          image={imageSrc}
+          title="Contemplative Reptile"
+          className={classes.media}
+        />
+        {/*<CardMedia
           className={classes.media}
           image={imageSrc}
           title="Contemplative Reptile"
-        />
+        />*/}
         <CardContent className={classes.nonePaddingBottom}>
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="div">
-            사용 기술:
-            <ul className={classes.marginBlockStartZero}>
-              {skills && skills.map((skill) => <li key={skill}>{skill}</li>)}
-            </ul>
-            주요 기능:
-            <ul className={classes.marginBlockStartZero}>
-              {functions && functions.map((func) => <li key={func}>{func}</li>)}
-            </ul>
+            <SkillFuncItems skills={skills} functions={functions} />
           </Typography>
         </CardContent>
         <CardActions className={classes.nonePaddingTop}>

@@ -1,7 +1,8 @@
 import React from "react";
-
+import MyTimeLine from "../components/MyTimeLine";
+import { projectInfo } from "../config/GlobalVariables";
 const Home = () => {
-  return <div>메인 페이지</div>;
+  return <MyTimeLine items={projectInfo} />;
 };
 
 export default Home;
