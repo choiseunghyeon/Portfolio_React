@@ -66,7 +66,7 @@ function App() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="fixed" color="inherit" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -77,7 +77,7 @@ function App() {
           >
             <AccountCircle fontSize="large" />
           </IconButton>
-          <Typography variant="h5">포트폴리오</Typography>
+          <Typography variant="h5">Portfolio</Typography>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="developer info">

@@ -1,5 +1,6 @@
 import test from "../styles/images/test.jpg";
-
+import eatIcon from "../styles/images/whatToEat_icon.png";
+import smartmirror from "../styles/images/smartmirror.jpg";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
@@ -34,10 +35,14 @@ export const developerInfo = {
 export const projectInfo = [
   {
     title: "오늘 뭐 먹지?",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc:
-      "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F990EEB4D5B0DFCB120B865",
+    skills: ["Flutter"],
+    functions: [
+      "음식점-카페-술집 리스트",
+      "선택된 가게 랜덤 선택",
+      "google Map에서 가게 위치 확인",
+      "가게 정보 확인 및 전화",
+    ],
+    imageSrc: eatIcon,
     icons: [
       {
         href:
@@ -53,9 +58,17 @@ export const projectInfo = [
   },
   {
     title: "Smart Mirror",
-    imageSrc: test,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
+    imageSrc: smartmirror,
+    skills: ["Vue.js", "Vuetify", "SocketIO", "Node.js(express)", "MongoDB"],
+    functions: [
+      "날씨",
+      "시간",
+      "미세먼지",
+      "유튜브 영상 검색 및 재생",
+      "영상 제어(멈춤, 시작, 10초 앞-뒤로 이동 등",
+      "영상 저장",
+      "무드등 제어",
+    ],
     icons: [
       {
         href: "https://webigotr.tistory.com/246",
@@ -73,45 +86,15 @@ export const projectInfo = [
   },
   {
     title: "Portfolio",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
     imageSrc: test,
+    skills: ["React.js", "MATERIAL-UI"],
+    functions: ["개발자 소개 페이지", "프로젝트 소개 페이지", "스킬셋 페이지"],
     icons: [
       {
         href: "https://github.com/choiseunghyeon/Portfolio_React",
         icon: "github",
       },
     ],
-  },
-  {
-    title: "Project title",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc: test,
-  },
-  {
-    title: "test title1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc: test,
-  },
-  {
-    title: "test title2",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc: test,
-  },
-  {
-    title: "test title3",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc: test,
-  },
-  {
-    title: "test title4",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commod",
-    imageSrc: test,
   },
 ];
 

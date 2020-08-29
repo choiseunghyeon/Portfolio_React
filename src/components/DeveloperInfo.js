@@ -6,7 +6,7 @@ import Anchor from "./common/Anchor";
 import { developerInfo } from "../config/GlobalVariables";
 
 const useStyles = makeStyles((theme) => ({
-  textAlignCenter: { textAlign: "center" },
+  infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },
   large: {
     width: theme.spacing(7),
     height: theme.spacing(7),
@@ -27,7 +27,7 @@ const DeveloperInfo = () => {
   console.log(developerInfo);
   const classes = useStyles();
   return (
-    <div className={classes.textAlignCenter}>
+    <div className={classes.infoStyle}>
       <Grid
         container
         direction="row"
