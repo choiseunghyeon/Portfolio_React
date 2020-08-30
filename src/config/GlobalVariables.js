@@ -36,6 +36,9 @@ export const developerInfo = {
 export const projectInfo = [
   {
     title: "Smart Mirror",
+    subtitle: "기획, 개발, 디자인 최승현",
+    description:
+      "뷰티 유투버를 보면서 화장하는 누나의 모습이 안쓰러워 제작하기 시작하였습니다. 군대에 있을 때 제작하였으며 하드웨어, 소프트웨어까지 직접 제작하였습니다. ",
     imageSrc: smartmirror,
     skills: ["Vue.js", "Vuetify", "SocketIO", "Node.js(express)", "MongoDB"],
     functions: [
@@ -64,6 +67,9 @@ export const projectInfo = [
   },
   {
     title: "오늘 뭐 먹지?",
+    subtitle: "기획, 개발, 디자인 최승현",
+    description:
+      "학교 앞에서 자취 생활을 오래 하다 보니 매일 뭐 먹을지 고민하는 제 자신과 주변 사람을 많이 보게 되었습니다. 그래서 이러한 고민을 해결하고자 오늘 뭐 먹지? 라는 어플을 제작하게 되었습니다.",
     skills: ["Flutter"],
     functions: [
       "음식점-카페-술집 리스트",
@@ -87,6 +93,9 @@ export const projectInfo = [
   },
   {
     title: "Portfolio",
+    subtitle: "기획, 개발, 디자인 최승현",
+    description:
+      "자신을 어떻게 어필할지 고민하는 개발자들을 위해 포트폴리오 플랫폼이 있으면 좋겠다고 생각하여 제작하게 되었습니다.",
     imageSrc: portfolioPage,
     skills: ["React.js", "MATERIAL-UI"],
     functions: ["개발자 소개 페이지", "프로젝트 소개 페이지", "스킬셋 페이지"],

@@ -1,9 +1,8 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "../logo.svg";
-import Anchor from "./common/Anchor";
-import { developerInfo } from "../config/GlobalVariables";
+import Anchor from "../common/Anchor";
+import { developerInfo } from "../../config/GlobalVariables";
 
 const useStyles = makeStyles((theme) => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },

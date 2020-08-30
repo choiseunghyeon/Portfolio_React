@@ -1,9 +1,9 @@
 import React from "react";
-
-import { SkillsCardList } from "../components/common/CardList";
 import { skillsInfo } from "../config/GlobalVariables";
-const Skills = () => {
+import SkillsCardList from "../components/skills/SkillsCardList";
+
+const SkillsPage = () => {
   return <SkillsCardList items={skillsInfo} />;
 };
 
-export default Skills;
+export default SkillsPage;

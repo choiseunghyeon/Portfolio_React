@@ -1,8 +1,13 @@
 import React from "react";
+import ProjectCardList from "../components/project/ProjectCardList";
 import { projectInfo } from "../config/GlobalVariables";
-import { ProjectCardList } from "../components/common/CardList";
-const Project = () => {
-  return <ProjectCardList items={projectInfo} />;
+
+const ProjectPage = () => {
+  return (
+    <>
+      <ProjectCardList items={projectInfo} />
+    </>
+  );
 };
 
-export default Project;
+export default ProjectPage;

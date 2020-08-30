@@ -1,19 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import ProjectCardItem from "../project/ProjectCardItem";
-import SkillCardItem from "../skills/SkillCardItem";
+import SkillCardItem from "./SkillCardItem";
 
-export const ProjectCardList = ({ items }) => {
-  return (
-    <Grid container spacing={1}>
-      {items.map((item) => (
-        <ProjectCardItem key={item.title} item={item} />
-      ))}
-    </Grid>
-  );
-};
-
-export const SkillsCardList = ({ items }) => {
+function SkillsCardList({ items }) {
   const { fontAwesomeArray, iconSrcArray } = items;
   return (
     <Grid container spacing={1}>
@@ -34,4 +23,6 @@ export const SkillsCardList = ({ items }) => {
       ))}
     </Grid>
   );
-};
+}
+
+export default SkillsCardList;
