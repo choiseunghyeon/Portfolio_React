@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import {
   createMuiTheme,
@@ -15,11 +14,14 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 //fontawesome setting
 library.add(fab);
 
+// MUI drark Theme setting
 let darkTheme = createMuiTheme({
   palette: {
     type: "dark",
   },
 });
+
+// for Responsive font size
 darkTheme = responsiveFontSizes(darkTheme);
 
 ReactDOM.render(
@@ -30,8 +32,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

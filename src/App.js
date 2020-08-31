@@ -14,7 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { useTheme } from "@material-ui/core/styles";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
-
+import { routerPath } from "./config/GlobalVariables";
 function App() {
   const classes = useCustomStyles();
   const theme = useTheme();
@@ -25,6 +25,7 @@ function App() {
     if (windowWidth > theme.breakpoints.width("sm")) return;
     setMobileOpen(!mobileOpen);
   };
+  const { infoPath, projectPath, skillsPath } = routerPath;
 
   return (
     <div className={classes.root}>
@@ -53,9 +54,9 @@ function App() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route path={["/", "/info"]} component={InfoPage} exact />
-          <Route path="/project" component={ProjectPage} />
-          <Route path="/skills" component={SkillsPage} />
+          <Route path={infoPath} component={InfoPage} exact />
+          <Route path={projectPath} component={ProjectPage} />
+          <Route path={skillsPath} component={SkillsPage} />
           <Route
             render={() => (
               <Typography variant="h2">존재하지 않는 페이지입니다.</Typography>

@@ -6,10 +6,9 @@ import {
   TimelineSeparator,
   TimelineConnector,
   TimelineContent,
-  TimelineOppositeContent,
   TimelineDot,
 } from "@material-ui/lab";
-import { Paper, Typography } from "@material-ui/core";
+import { Paper, Typography, withWidth } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,15 +23,22 @@ const useStyles = makeStyles((theme) => ({
   },
   // 기존 flex: 1로 TimelineItem을 가운데로 맞춰주기 위해 해당 element 반대편에 공간을 차지하는 스타일이 적용되어 있음
   zeroFlex: {
-    flex: 0,
+    "&:before": {
+      flex: 0,
+      padding: 0,
+    },
   },
 }));
 
-const MyTimeLineItem = React.memo(({ item }) => {
+const MyTimeLineItem = React.memo(({ item, width }) => {
   const { year, title, body, component, textAlignLeft, icon } = item;
   const classes = useStyles();
   return (
-    <TimelineItem>
+    <TimelineItem
+      classes={
+        width === "xs" ? { missingOppositeContent: classes.zeroFlex } : null
+      }
+    >
       <TimelineSeparator>
         <TimelineDot color="primary" variant="outlined">
           {icon}
@@ -60,14 +66,16 @@ const MyTimeLineItem = React.memo(({ item }) => {
   );
 });
 
-const MyTimeLine = React.memo(({ items }) => {
+const MyTimeLine = React.memo(({ items, width }) => {
+  // width에 현재 브라우저 크기 상태값이 들어 있음 (md, sm, lg 등)
+  console.log(width);
   return (
-    <Timeline align="alternate">
+    <Timeline align={width === "xs" ? "left" : "alternate"}>
       {items.map((item) => (
-        <MyTimeLineItem item={item} key={item.id} />
+        <MyTimeLineItem item={item} width={width} key={item.id} />
       ))}
     </Timeline>
   );
 });
 
-export default MyTimeLine;
+export default withWidth()(MyTimeLine);

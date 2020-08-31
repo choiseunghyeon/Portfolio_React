@@ -18,9 +18,20 @@ import SkillFuncItems from "../common/SkillFuncItems";
 import Anchor from "../common/Anchor";
 
 const useStyles = makeStyles((theme) => ({
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+  headerRoot: {
+    display: "flex",
+    padding: "16px 16px 0 16px",
+    alignItems: "center",
+  },
+  bottomPaddingZero: {
+    padding: "16px 16px 0 16px",
+  },
+  mediaBox: {
+    height: "300px",
+  },
+  mediaFill: {
+    height: "100%",
+    objectFit: "fill",
   },
   expand: {
     transform: "rotate(0deg)",
@@ -50,15 +61,24 @@ const ProjectCardItem = React.memo(({ item }) => {
     imageSrc,
   } = item;
   return (
-    <Grid item xs={12} md={3} variant="outlined">
+    <Grid item xs={12} md={4} variant="outlined">
       <Card>
-        <CardHeader title={title} subheader={subtitle} />
-        <CardMedia
-          image={imageSrc}
-          title="Contemplative Reptile"
-          className={classes.media}
+        <div className={classes.mediaBox}>
+          {imageSrc && (
+            <CardMedia
+              image={imageSrc}
+              title="project image"
+              component="img"
+              className={classes.mediaFill}
+            />
+          )}
+        </div>
+        <CardHeader
+          title={title}
+          subheader={subtitle}
+          className={classes.bottomPaddingZero}
         />
-        <CardContent>
+        <CardContent className={classes.bottomPaddingZero}>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
           </Typography>
