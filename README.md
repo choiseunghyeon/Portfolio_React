@@ -1,3 +1,11 @@
+### Desktop
+
+![Alt Text](https://github.com/choiseunghyeon/Portfolio_React/blob/master/portfolioPage.gif?raw=true)
+
+### Mobile
+
+![Alt Text](https://github.com/choiseunghyeon/Portfolio_React/blob/master/mobilePortfolio.gif?raw=true)
+
 ## How to use
 
 All you have to do is just input your info in /config/GlobalVariables.js  
