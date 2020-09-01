@@ -10,13 +10,13 @@ import {
   AccountCircle,
 } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
+
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
 
     https://img.icons8.com/
  */
-
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo = {
   title: "Front End Developer",
@@ -48,7 +48,14 @@ export const projectInfo = [
     description:
       "뷰티 유투버를 보면서 화장하는 누나의 모습이 안쓰러워 제작하기 시작하였습니다. 군대에 있을 때 제작하였으며 하드웨어, 소프트웨어까지 직접 제작하였습니다. ",
     imageSrc: smartmirror,
-    skills: ["Vue.js", "Vuetify", "SocketIO", "Node.js(express)", "MongoDB"],
+    skills: [
+      "Vue.js",
+      "Vuex",
+      "Vuetify",
+      "SocketIO",
+      "Node.js(express)",
+      "MongoDB",
+    ],
     functions: [
       "날씨",
       "시간",
@@ -180,7 +187,7 @@ export const timeLineItems = [
     icon: <Https />,
   },
   {
-    id: 4,
+    id: 3,
     year: "2017년 ~ 2018년",
     title: "군대 입대 및 전역",
     body:
@@ -191,7 +198,7 @@ export const timeLineItems = [
     id: 5,
     year: "2018년 ~ 2019년",
     title: "Smart Mirror 개발",
-    body: "BOB5기 교육 이수 및 웹 해킹 및 보안 프로젝트 진행",
+    body: "하드웨어 및 소프트웨어 제작 / Full Stack 개발",
     textAlignLeft: true,
     component: (
       <SkillFuncItems

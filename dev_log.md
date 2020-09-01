@@ -27,3 +27,5 @@
 진행 예정
 
 - Masonry Layout PorjectCard 보여줄 때 적용
+- SEO 적용
+- Open Source 공개
