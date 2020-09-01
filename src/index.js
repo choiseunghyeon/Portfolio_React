@@ -10,25 +10,14 @@ import {
 } from "@material-ui/core/styles";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import theme from "./config/GlobalStyleVariables";
 
 //fontawesome setting
 library.add(fab);
 
-// MUI drark Theme setting
-let darkTheme = createMuiTheme({
-  palette: {
-    type: "dark",
-  },
-});
-
-// for Responsive font size
-darkTheme = responsiveFontSizes(darkTheme);
-
 ReactDOM.render(
   <BrowserRouter>
-    <ThemeProvider theme={darkTheme}>
-      <App />
-    </ThemeProvider>
+    <App />
   </BrowserRouter>,
   document.getElementById("root")
 );

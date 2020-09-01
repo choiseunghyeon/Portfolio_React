@@ -24,8 +24,14 @@
 - MyTimeLine Mobile에서 깨지던 디자인 잘 보이게 수정
 - github pages에 배포
 
+  20.09.01
+
+- light mode, dark mode 선택 기능 추가
+- appbar 모듈화
+
 진행 예정
 
+- typescript 적용
 - Masonry Layout PorjectCard 보여줄 때 적용
 - SEO 적용
 - Open Source 공개
