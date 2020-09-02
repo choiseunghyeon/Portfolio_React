@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     textAlign: "center",
     padding: "10px",
   },
+  licence: {
+    textDecoration: "none",
+    color: "inherit",
+    opacity: 0.5,
+    fontSize: "0.6rem",
+  },
 });
 
 const SkillCardItem = React.memo(
@@ -20,20 +26,18 @@ const SkillCardItem = React.memo(
     return (
       <Grid item xs={12} md={2} variant="outlined">
         <Card className={classes.customCard}>
-          <CardActionArea>
-            {fontAwesome && (
-              <FontAwesomeIcon icon={["fab", fontAwesome]} size="5x" />
-            )}
-            {imageSrc && <img src={imageSrc} alt="test" />}
-            <Typography variant="h5" component="h2">
-              {title}
-            </Typography>
-            {/* {licenceSrc && (
-            <a href="https://icons8.com/icon/74402/mongodb">
-            MongoDB icon by Icons8
+          {fontAwesome && (
+            <FontAwesomeIcon icon={["fab", fontAwesome]} size="5x" />
+          )}
+          {imageSrc && <img src={imageSrc} alt="test" />}
+          <Typography variant="h5" component="h2">
+            {title}
+          </Typography>
+          {licenceSrc && (
+            <a className={classes.licence} href={licenceSrc}>
+              icon licence
             </a>
-          )} */}
-          </CardActionArea>
+          )}
         </Card>
       </Grid>
     );
