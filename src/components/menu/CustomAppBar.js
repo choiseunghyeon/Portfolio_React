@@ -31,7 +31,10 @@ export default function CustomDrawer({
           <Typography variant="h5" className={classes.content}>
             Portfolio
           </Typography>
-          <Button variant="contained" onClick={() => handleMode()}>
+          <Button
+            style={darkMode ? { color: "white" } : { color: "black" }}
+            onClick={() => handleMode()}
+          >
             {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Toolbar>

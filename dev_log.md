@@ -29,9 +29,12 @@
 - light mode, dark mode 선택 기능 추가
 - appbar 모듈화
 
+  20.09.11
+
+- typescript 적용 진행
+
 진행 예정
 
-- typescript 적용
 - Masonry Layout PorjectCard 보여줄 때 적용
 - SEO 적용
 - Open Source 공개

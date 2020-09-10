@@ -1,6 +1,6 @@
 import React from "react";
-import whatToEat from "../styles/images/whatToEat.PNG";
 import smartmirror from "../styles/images/smartMirror.PNG";
+import * as whatToEat from "../styles/images/whatToEat.PNG";
 import portfolioPage from "../styles/images/portfolio.PNG";
 import {
   EmojiPeople,
@@ -10,7 +10,18 @@ import {
   AccountCircle,
 } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
+type IconInfo = {
+  href: string;
+  icon: string;
+};
 
+type DeveloperInfo = {
+  title: string;
+  subTitle: string;
+  content: string;
+  imageSrc: string;
+  icons: IconInfo[];
+};
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free

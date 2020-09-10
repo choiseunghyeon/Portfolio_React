@@ -1,6 +1,11 @@
 import React from "react";
 
-const SkillsFuncList = React.memo(({ skills, functions }) => {
+type SkillsFuncListProps = {
+  skills: string[];
+  functions: string[];
+};
+
+function SkillsFuncList({ skills, functions }: SkillsFuncListProps) {
   return (
     <>
       적용 기술:
@@ -21,6 +26,6 @@ const SkillsFuncList = React.memo(({ skills, functions }) => {
       </ul>
     </>
   );
-});
+}
 
-export default SkillsFuncList;
+export default React.memo(SkillsFuncList);

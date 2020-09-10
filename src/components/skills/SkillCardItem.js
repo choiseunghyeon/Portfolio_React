@@ -1,6 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Grid, Typography, Card, CardActionArea } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Card,
+  CardActionArea,
+  LinearProgress,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -33,6 +39,7 @@ const SkillCardItem = React.memo(
           <Typography variant="h5" component="h2">
             {title}
           </Typography>
+          <LinearProgress variant="determinate" value="75" />
           {licenceSrc && (
             <a className={classes.licence} href={licenceSrc}>
               icon licence
