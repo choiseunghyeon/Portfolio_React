@@ -22,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DeveloperInfo = () => {
-  const { title, subTitle, content, icons, imageSrc } = developerInfo;
-  console.log(developerInfo);
+  const { title, subtitle, content, icons, imageSrc } = developerInfo;
   const classes = useStyles();
   return (
     <div className={classes.infoStyle}>
@@ -44,7 +43,7 @@ const DeveloperInfo = () => {
         </Grid>
         <Grid item xs={12} className={classes.marginLeftRight}>
           <Typography variant="h5" component="h3">
-            {subTitle}
+            {subtitle}
           </Typography>
         </Grid>
         <Grid item xs={12} className={classes.marginLeftRight}>

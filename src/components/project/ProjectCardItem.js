@@ -61,7 +61,7 @@ const ProjectCardItem = React.memo(({ item }) => {
     imageSrc,
   } = item;
   return (
-    <Grid item xs={12} md={4} variant="outlined">
+    <Grid item xs={12} md={4}>
       <Card>
         <div className={classes.mediaBox}>
           {imageSrc && (

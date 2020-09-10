@@ -1,7 +1,9 @@
 import React from "react";
-import smartmirror from "../styles/images/smartMirror.PNG";
-import * as whatToEat from "../styles/images/whatToEat.PNG";
-import portfolioPage from "../styles/images/portfolio.PNG";
+const smartmirror = require("../styles/images/smartMirror.PNG");
+const whatToEat = require("../styles/images/whatToEat.PNG");
+const portfolioPage = require("../styles/images/portfolio.PNG");
+
+/* eslint-disable import/first */
 import {
   EmojiPeople,
   LaptopMac,
@@ -10,18 +12,7 @@ import {
   AccountCircle,
 } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
-type IconInfo = {
-  href: string;
-  icon: string;
-};
-
-type DeveloperInfo = {
-  title: string;
-  subTitle: string;
-  content: string;
-  imageSrc: string;
-  icons: IconInfo[];
-};
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo } from "./Type";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
@@ -29,9 +20,9 @@ type DeveloperInfo = {
     https://img.icons8.com/
  */
 // use it /src/components/menu/DeveloperInfo.js
-export const developerInfo = {
+export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",
-  subTitle: "최승현",
+  subtitle: "최승현",
   content: "",
   imageSrc:
     "https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/75234614_955217671543664_4238448438372466688_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=iD6E9PhUfL4AX-kXGPc&oh=3cf98363f2f1e4a46955a90890d08db9&oe=5F73A005",
@@ -52,7 +43,7 @@ export const developerInfo = {
 };
 
 // use it /src/pages/ProjectPage.js
-export const projectInfo = [
+export const projectInfo: ProejctInfo[] = [
   {
     title: "Smart Mirror",
     subtitle: "기획, 개발, 디자인 최승현",
@@ -135,7 +126,7 @@ export const projectInfo = [
 ];
 
 // use it /src/pages/SkillsPage.js
-export const skillsInfo = {
+export const skillsInfo: SkillsInfo = {
   fontAwesomeArray: [
     {
       title: "HTML5",
@@ -182,7 +173,7 @@ export const skillsInfo = {
 };
 
 // use it /src/pages/InfoPage.js
-export const timeLineItems = [
+export const timeLineItems: TimeLine[] = [
   {
     id: 1,
     year: "2015년",
@@ -237,6 +228,7 @@ export const timeLineItems = [
     id: 7,
     year: "2020년",
     title: "취업 중...",
+    body: "",
     icon: <AccountCircle />,
   },
 ];
