@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import {
   Grid,
@@ -16,6 +16,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SkillFuncItems from "../common/SkillFuncItems";
 import Anchor from "../common/Anchor";
+import { ProejctInfo } from "../../config/Type";
+
+type ProjectCardItemProps = {
+  item: ProejctInfo;
+};
 
 const useStyles = makeStyles((theme) => ({
   headerRoot: {
@@ -45,9 +50,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProjectCardItem = React.memo(({ item }) => {
+function ProjectCardItem({ item }: ProjectCardItemProps) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -113,6 +118,6 @@ const ProjectCardItem = React.memo(({ item }) => {
       </Card>
     </Grid>
   );
-});
+}
 
-export default ProjectCardItem;
+export default React.memo(ProjectCardItem);

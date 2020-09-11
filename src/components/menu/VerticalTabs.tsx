@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Tabs, Tab } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -10,8 +10,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const tabItems = ["Info", "Project", "Skills"];
-function a11yProps(index) {
+const tabItems: string[] = ["Info", "Project", "Skills"];
+
+function a11yProps(index: number): any {
   const path = tabItems[index].toLowerCase() + "Path";
   return {
     id: `vertical-tab-${index}`,
@@ -21,10 +22,10 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs({ handleDrawerToggle }) {
-  const [value, setValue] = React.useState(0);
+export default function VerticalTabs({ handleDrawerToggle }: any) {
+  const [value, setValue] = useState<number>(0);
   const classes = useStyles();
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: any, newValue: number) => {
     setValue(newValue);
     // 현재 window 크기 전달
     handleDrawerToggle(event.view.innerWidth);

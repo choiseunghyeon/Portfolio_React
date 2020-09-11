@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 import {
   Timeline,
   TimelineItem,
@@ -8,15 +9,17 @@ import {
   TimelineContent,
   TimelineDot,
 } from "@material-ui/lab";
-import { Paper, Typography, withWidth } from "@material-ui/core";
+import { Paper, Typography, withWidth, Theme } from "@material-ui/core";
+import { TimeLine } from "../../config/Type";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   paper: {
     padding: "6px 16px",
     display: "inline-block",
   },
   textAlignLeft: {
-    textAlign: "left !important",
+    textAlign: "left",
+    // textAlign: "left !important",
   },
   inlinBlock: {
     display: "inline-block",
@@ -28,15 +31,25 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
     },
   },
-}));
+});
 
-const MyTimeLineItem = React.memo(({ item, width }) => {
+type Width = {
+  width: Breakpoint;
+};
+
+type MyTimeLineItemProps = Width & {
+  item: TimeLine;
+};
+
+const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
   const { year, title, body, component, textAlignLeft, icon } = item;
-  const classes = useStyles();
+  const customClass = useStyles();
   return (
     <TimelineItem
       classes={
-        width === "xs" ? { missingOppositeContent: classes.zeroFlex } : null
+        width === "xs"
+          ? { missingOppositeContent: customClass.zeroFlex }
+          : undefined
       }
     >
       <TimelineSeparator>
@@ -51,8 +64,8 @@ const MyTimeLineItem = React.memo(({ item, width }) => {
         </Typography>
         <Paper
           elevation={3}
-          className={`${classes.paper} ${
-            textAlignLeft && classes.textAlignLeft
+          className={`${customClass.paper} ${
+            textAlignLeft && customClass.textAlignLeft
           }`}
         >
           <Typography variant="h6">{title}</Typography>
@@ -66,7 +79,11 @@ const MyTimeLineItem = React.memo(({ item, width }) => {
   );
 });
 
-const MyTimeLine = React.memo(({ items, width }) => {
+type MyTimeLineProps = Width & {
+  items: TimeLine[];
+};
+
+const MyTimeLine = React.memo(({ items, width }: MyTimeLineProps) => {
   // width에 현재 브라우저 크기 상태값이 들어 있음 (md, sm, lg 등)
   console.log(width);
   return (

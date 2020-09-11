@@ -1,6 +1,8 @@
+import { IconName } from "@fortawesome/fontawesome-svg-core";
+
 type IconInfo = {
   href: string;
-  icon: string;
+  icon: IconName;
 };
 type BasicInfo = {
   title: string;
@@ -44,4 +46,12 @@ export type TimeLine = {
 export type SkillsInfo = {
   fontAwesomeArray: FA[];
   iconSrcArray: IconSrc[];
+};
+
+export type RouterPath = {
+  //for index signature
+  [key: string]: string[];
+  infoPath: string[];
+  projectPath: string[];
+  skillsPath: string[];
 };

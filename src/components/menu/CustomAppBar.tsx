@@ -9,12 +9,21 @@ import {
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import useCustomStyles from "../../styles/Material-UI/style";
 
+type CustomDrawerProps = {
+  handleDrawerToggle: (windowWidth: number) => void;
+  handleMode: () => void;
+  darkMode: boolean;
+};
+
 export default function CustomDrawer({
   handleDrawerToggle,
   handleMode,
   darkMode,
-}) {
+}: CustomDrawerProps) {
   const classes = useCustomStyles();
+  const onClick = (event: any) => {
+    handleDrawerToggle(event.view.innerWidth);
+  };
   return (
     <>
       <AppBar position="fixed" color="inherit" className={classes.appBar}>
@@ -23,7 +32,7 @@ export default function CustomDrawer({
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={handleDrawerToggle}
+            onClick={onClick}
             className={classes.accountButton}
           >
             <AccountCircle fontSize="large" />

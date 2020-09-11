@@ -1,15 +1,24 @@
 import React from "react";
-import { Drawer, Hidden } from "@material-ui/core";
+import { Drawer, Hidden, Theme } from "@material-ui/core";
 import DeveloperInfo from "./DeveloperInfo";
 import VerticalTabs from "./VerticalTabs";
 import useCustomStyles from "../../styles/Material-UI/style";
+
+type CustomDrawerProps = {
+  handleDrawerToggle: (windowWidth: number) => void;
+  theme: Theme;
+  mobileOpen: boolean;
+};
 
 export default function CustomDrawer({
   handleDrawerToggle,
   theme,
   mobileOpen,
-}) {
+}: CustomDrawerProps) {
   const classes = useCustomStyles();
+  const onClose = (event: any) => {
+    handleDrawerToggle(event.view.innerWidth);
+  };
   return (
     <>
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -18,7 +27,7 @@ export default function CustomDrawer({
           variant="temporary"
           anchor={theme.direction === "rtl" ? "right" : "left"}
           open={mobileOpen}
-          onClose={handleDrawerToggle}
+          onClose={onClose}
           classes={{
             paper: classes.drawerPaper,
           }}

@@ -15,8 +15,8 @@ import {
 } from "@material-ui/core/styles";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   const classes = useCustomStyles();
   let theme = useMemo(
@@ -35,7 +35,7 @@ function App() {
     setDarkMode((state) => (state = !state));
   }, []);
   const handleDrawerToggle = useCallback(
-    (windowWidth) => {
+    (windowWidth: number) => {
       // 현재 윈도우 크기가 breakpoints보다 크면 toggle 기능 차단
       // mobile page에서 메뉴 선택 후 토글 하기 위함
       if (windowWidth > theme.breakpoints.width("sm")) return;

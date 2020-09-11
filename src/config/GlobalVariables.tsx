@@ -12,12 +12,18 @@ import {
   AccountCircle,
 } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
-import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo } from "./Type";
+import {
+  DeveloperInfo,
+  ProejctInfo,
+  TimeLine,
+  SkillsInfo,
+  RouterPath,
+} from "./Type";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
 
-    https://img.icons8.com/
+    https://icons8.com/icons/
  */
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
@@ -155,6 +161,12 @@ export const skillsInfo: SkillsInfo = {
   ],
   iconSrcArray: [
     {
+      imageSrc:
+        "https://img.icons8.com/material-sharp/58/000000/typescript.png",
+      licenceSrc: "https://icons8.com/icon/YWLbMrwEOpyM/typescript",
+      title: "TypeScript",
+    },
+    {
       imageSrc: "https://img.icons8.com/color/58/000000/flutter.png",
       licenceSrc: "https://icons8.com/icon/7I3BjCqe9rjG/flutter",
       title: "Flutter",
@@ -234,8 +246,8 @@ export const timeLineItems: TimeLine[] = [
 ];
 
 // type your github repository name. it will be your static site default path
-const REPO_NAME = "/Portfolio_React";
-export const routerPath = {
+const REPO_NAME: string = "/Portfolio_React";
+export const routerPath: RouterPath = {
   infoPath: [REPO_NAME, REPO_NAME + "/info", "/"],
   projectPath: [REPO_NAME + "/project", "/project"],
   skillsPath: [REPO_NAME + "/skills", "/skills"],
