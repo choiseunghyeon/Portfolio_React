@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Anchor from "../common/Anchor";
 import { developerInfo } from "../../config/GlobalVariables";
 
@@ -51,10 +50,7 @@ const DeveloperInfo = () => {
         </Grid>
         {icons.map((icon, idx) => (
           <Grid item xs={4} key={idx}>
-            <Anchor
-              href={icon.href}
-              icon={<FontAwesomeIcon icon={["fab", icon.icon]} />}
-            />
+            <Anchor iconInfo={icon} fontSize="1.5rem" />
           </Grid>
         ))}
       </Grid>

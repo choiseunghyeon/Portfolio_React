@@ -1,34 +1,40 @@
 import React from "react";
-import { IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { IconInfo } from "../../config/Type";
 
 type AnchorProps = {
-  href: string;
-  icon: JSX.Element;
-  children?: React.ReactNode;
+  iconInfo: IconInfo;
+  fontSize?: string;
 };
 
-const useStyles = makeStyles({
+type StyleProps = {
+  size: string | undefined;
+};
+const useStyles = makeStyles<unknown, StyleProps>({
   decorationNone: {
     textDecoration: "none",
+    fontSize: (props) => props.size,
+    color: "inherit",
   },
 });
 
-const Anchor = ({ href, icon, children }: AnchorProps) => {
-  const classes = useStyles();
-  if (children) {
+const Anchor = ({ iconInfo, fontSize }: AnchorProps) => {
+  const styleProps = { size: fontSize };
+  const classes = useStyles(styleProps);
+
+  const { href, icon } = iconInfo;
+  if (href) {
     return (
       <a href={href} target="_blank" className={classes.decorationNone}>
-        {children}
+        {icon}
       </a>
     );
   } else {
-    return (
-      <a href={href} target="_blank" className={classes.decorationNone}>
-        <IconButton>{icon}</IconButton>
-      </a>
-    );
+    return <a className={classes.decorationNone}>{icon}</a>;
   }
 };
 
-export default Anchor;
+Anchor.defaultProps = {
+  size: "2rem",
+};
+export default React.memo(Anchor);

@@ -33,8 +33,13 @@
 
 - typescript 적용 진행
 
+  20.09.15
+
+- open source 공개
+- Icon들 react-icons로 통합
+- Anchor 컴포넌트 수정
+
 진행 예정
 
 - Masonry Layout PorjectCard 보여줄 때 적용
 - SEO 적용
-- Open Source 공개

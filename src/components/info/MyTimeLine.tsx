@@ -9,7 +9,7 @@ import {
   TimelineContent,
   TimelineDot,
 } from "@material-ui/lab";
-import { Paper, Typography, withWidth, Theme } from "@material-ui/core";
+import { Paper, Typography, withWidth } from "@material-ui/core";
 import { TimeLine } from "../../config/Type";
 
 const useStyles = makeStyles({

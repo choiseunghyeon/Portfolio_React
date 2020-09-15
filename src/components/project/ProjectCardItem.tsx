@@ -13,7 +13,6 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SkillFuncItems from "../common/SkillFuncItems";
 import Anchor from "../common/Anchor";
 import { ProejctInfo } from "../../config/Type";
@@ -47,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   },
   expandOpen: {
     transform: "rotate(180deg)",
+  },
+  iconStyle: {
+    color: "inherit",
+    fontSize: "1.5rem",
   },
 }));
 
@@ -90,12 +93,10 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
         </CardContent>
         <CardActions disableSpacing>
           {icons &&
-            icons.map((icon, idx) => (
-              <Anchor
-                key={idx}
-                href={icon.href}
-                icon={<FontAwesomeIcon icon={["fab", icon.icon]} size="1x" />}
-              />
+            icons.map((icon, index) => (
+              <div key={index} style={{ padding: "0 8px" }}>
+                <Anchor iconInfo={icon} fontSize="1.45rem" />
+              </div>
             ))}
           <IconButton
             className={clsx(classes.expand, {

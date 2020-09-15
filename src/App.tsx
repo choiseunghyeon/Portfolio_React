@@ -66,7 +66,9 @@ function App() {
           <div className={classes.toolbar} />
           <Switch>
             <Route path={infoPath} component={InfoPage} exact />
+
             <Route path={projectPath} component={ProjectPage} />
+
             <Route path={skillsPath} component={SkillsPage} />
             <Route
               render={() => (

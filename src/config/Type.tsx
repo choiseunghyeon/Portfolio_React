@@ -1,22 +1,11 @@
-import { IconName } from "@fortawesome/fontawesome-svg-core";
-
-type IconInfo = {
-  href: string;
-  icon: IconName;
+export type IconInfo = {
+  href?: string;
+  title?: string;
+  icon: JSX.Element;
 };
 type BasicInfo = {
   title: string;
   subtitle: string;
-};
-
-export type FA = {
-  title: string;
-  fa: any;
-};
-export type IconSrc = {
-  imageSrc: string;
-  licenceSrc: string;
-  title: string;
 };
 
 export type DeveloperInfo = BasicInfo & {
@@ -44,8 +33,7 @@ export type TimeLine = {
 };
 
 export type SkillsInfo = {
-  fontAwesomeArray: FA[];
-  iconSrcArray: IconSrc[];
+  iconInfoArray: IconInfo[];
 };
 
 export type RouterPath = {

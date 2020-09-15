@@ -2,8 +2,26 @@ import React from "react";
 const smartmirror = require("../styles/images/smartMirror.PNG");
 const whatToEat = require("../styles/images/whatToEat.PNG");
 const portfolioPage = require("../styles/images/portfolio.PNG");
-
 /* eslint-disable import/first */
+import {
+  SiTypescript,
+  SiReact,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiFlutter,
+  SiJquery,
+  SiMongodb,
+} from "react-icons/si";
+import {
+  FaVuejs,
+  FaNode,
+  FaInstagram,
+  FaGithub,
+  FaBloggerB,
+  FaAppStoreIos,
+  FaGooglePlay,
+} from "react-icons/fa";
 import {
   EmojiPeople,
   LaptopMac,
@@ -35,15 +53,15 @@ export const developerInfo: DeveloperInfo = {
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",
-      icon: "github",
+      icon: <FaGithub />,
     },
     {
       href: "https://webigotr.tistory.com/",
-      icon: "blogger-b",
+      icon: <FaBloggerB />,
     },
     {
       href: "https://www.instagram.com/chshyeon_0_0/?hl=ko",
-      icon: "instagram",
+      icon: <FaInstagram />,
     },
   ],
 };
@@ -76,15 +94,15 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://webigotr.tistory.com/246",
-        icon: "blogger-b",
+        icon: <FaGithub />,
       },
       {
         href: "https://github.com/choiseunghyeon/smartmirror_vue",
-        icon: "github",
+        icon: <FaBloggerB />,
       },
       {
         href: "https://www.instagram.com/p/BjOeTGwnhWW/",
-        icon: "instagram",
+        icon: <FaInstagram />,
       },
     ],
   },
@@ -105,12 +123,12 @@ export const projectInfo: ProejctInfo[] = [
       {
         href:
           "https://apps.apple.com/kr/app/%EB%B0%B1%EC%84%9D%EB%8C%80-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1516435354",
-        icon: "app-store-ios",
+        icon: <FaAppStoreIos />,
       },
       {
         href:
           "https://play.google.com/store/apps/details?id=firstApp.whatToEat_byChoi",
-        icon: "google-play",
+        icon: <FaGooglePlay />,
       },
     ],
   },
@@ -125,7 +143,7 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://github.com/choiseunghyeon/Portfolio_React",
-        icon: "github",
+        icon: <FaGithub />,
       },
     ],
   },
@@ -133,53 +151,46 @@ export const projectInfo: ProejctInfo[] = [
 
 // use it /src/pages/SkillsPage.js
 export const skillsInfo: SkillsInfo = {
-  fontAwesomeArray: [
+  iconInfoArray: [
     {
       title: "HTML5",
-      fa: "html5",
+      icon: <SiHtml5 />,
     },
     {
       title: "CSS3",
-      fa: "css3-alt",
+      icon: <SiCss3 />,
     },
     {
       title: "JavaScript",
-      fa: "js",
+      icon: <SiJavascript />,
     },
     {
       title: "Vue",
-      fa: "vuejs",
+      icon: <FaVuejs />,
     },
     {
       title: "React",
-      fa: "react",
+      icon: <SiReact />,
     },
     {
       title: "Node",
-      fa: "node",
+      icon: <FaNode />,
     },
-  ],
-  iconSrcArray: [
     {
-      imageSrc:
-        "https://img.icons8.com/material-sharp/58/000000/typescript.png",
-      licenceSrc: "https://icons8.com/icon/YWLbMrwEOpyM/typescript",
       title: "TypeScript",
+      icon: <SiTypescript />,
     },
     {
-      imageSrc: "https://img.icons8.com/color/58/000000/flutter.png",
-      licenceSrc: "https://icons8.com/icon/7I3BjCqe9rjG/flutter",
       title: "Flutter",
+      icon: <SiFlutter />,
     },
     {
-      imageSrc: "https://img.icons8.com/ios-filled/58/000000/jquery.png",
-      licenceSrc: "https://icons8.com/icon/40253/jquery",
       title: "jQuery",
+      icon: <SiJquery />,
     },
     {
-      imageSrc: "https://img.icons8.com/color/58/000000/mongodb.png",
-      licenceSrc: "https://icons8.com/icon/74402/mongodb",
       title: "MongoDB",
+      icon: <SiMongodb />,
     },
   ],
 };
