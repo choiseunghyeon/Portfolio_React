@@ -29,7 +29,7 @@ function SkillCardItem({ iconInfo }: SkillCardItem) {
         <Typography variant="h5" component="h2">
           {title}
         </Typography>
-        <LinearProgress variant="determinate" value={75} />
+        {/* <LinearProgress variant="determinate" value={75} /> */}
       </Card>
     </Grid>
   );

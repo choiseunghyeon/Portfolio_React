@@ -11,26 +11,34 @@ type StyleProps = {
   size: string | undefined;
 };
 const useStyles = makeStyles<unknown, StyleProps>({
-  decorationNone: {
+  anchorStyle: {
+    display: "flex",
+    justifyContent: "center",
     textDecoration: "none",
     fontSize: (props) => props.size,
     color: "inherit",
+    marginBottom: "10px",
   },
 });
 
 const Anchor = ({ iconInfo, fontSize }: AnchorProps) => {
-  const styleProps = { size: fontSize };
+  const styleProps: StyleProps = { size: fontSize };
   const classes = useStyles(styleProps);
 
   const { href, icon } = iconInfo;
   if (href) {
     return (
-      <a href={href} target="_blank" className={classes.decorationNone}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.anchorStyle}
+      >
         {icon}
       </a>
     );
   } else {
-    return <a className={classes.decorationNone}>{icon}</a>;
+    return <div className={classes.anchorStyle}>{icon}</div>;
   }
 };
 

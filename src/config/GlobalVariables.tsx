@@ -2,6 +2,7 @@ import React from "react";
 const smartmirror = require("../styles/images/smartMirror.PNG");
 const whatToEat = require("../styles/images/whatToEat.PNG");
 const portfolioPage = require("../styles/images/portfolio.PNG");
+const profilePicture = require("../styles/images/profilePicture.jpg");
 /* eslint-disable import/first */
 import {
   SiTypescript,
@@ -48,8 +49,7 @@ export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",
   subtitle: "최승현",
   content: "",
-  imageSrc:
-    "https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/75234614_955217671543664_4238448438372466688_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=iD6E9PhUfL4AX-kXGPc&oh=3cf98363f2f1e4a46955a90890d08db9&oe=5F73A005",
+  imageSrc: profilePicture,
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",
