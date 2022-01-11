@@ -249,9 +249,16 @@ export const timeLineItems: TimeLine[] = [
   },
   {
     id: 7,
-    year: "2020년",
-    title: "취업 중...",
-    body: "",
+    year: "2020년 11월 16일",
+    title: "이카운트 입사",
+    body: "자체 프론트엔드 프레임워크 신규 기능 개발 및 유지 보수",
+    icon: <AccountCircle />,
+  },
+  {
+    id: 8,
+    year: "2021년 10월 12일",
+    title: "이카운트 신규 프로젝트 진행",
+    body: "자체 프론트엔드 프레임워크 신규 기능 개발 / 리팩토링 / 테스트 코드 설계 및 작성",
     icon: <AccountCircle />,
   },
 ];
