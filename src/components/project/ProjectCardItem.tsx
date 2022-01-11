@@ -69,7 +69,7 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
     imageSrc,
   } = item;
   return (
-    <Grid item xs={12} md={4}>
+    <Grid item xs={12} md={6}>
       <Card>
         <div className={classes.mediaBox}>
           {imageSrc && (

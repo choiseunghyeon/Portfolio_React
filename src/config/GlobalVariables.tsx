@@ -3,6 +3,7 @@ const smartmirror = require("../styles/images/smartMirror.PNG");
 const whatToEat = require("../styles/images/whatToEat.PNG");
 const portfolioPage = require("../styles/images/portfolio.PNG");
 const profilePicture = require("../styles/images/profilePicture.jpg");
+const multiProject = require("../styles/images/multiProject.png");
 /* eslint-disable import/first */
 import {
   SiTypescript,
@@ -22,6 +23,7 @@ import {
   FaBloggerB,
   FaAppStoreIos,
   FaGooglePlay,
+  FaMicrosoft,
 } from "react-icons/fa";
 import {
   EmojiPeople,
@@ -143,6 +145,25 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://github.com/choiseunghyeon/Portfolio_React",
+        icon: <FaGithub />,
+      },
+    ],
+  },
+  {
+    title: "VSC Extension - Multi Project",
+    subtitle: "개발 최승현",
+    description:
+      "회사 프로젝트의 모듈들이 각 폴더로 분리되어 있어서 개발할 때는 VSC가 여러 개 실행됩니다.\n 각 폴더를 찾고 관리하는게 불편하여 하나의 VSC WorkSpace에서 여러 모듈을 관리하고 빠르게 이동하기 위해 개발하였습니다.",
+    imageSrc: multiProject,
+    skills: ["TypeScript", "VSC Extension"],
+    functions: ["폴더 관리", "폴더 이동", "북마크"],
+    icons: [
+      {
+        href: "https://marketplace.visualstudio.com/items?itemName=choiseunghyeon.multi-project",
+        icon: <FaMicrosoft />,
+      },
+      {
+        href: "https://github.com/choiseunghyeon/vscode-multi-project",
         icon: <FaGithub />,
       },
     ],
