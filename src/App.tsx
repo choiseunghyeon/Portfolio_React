@@ -1,23 +1,28 @@
 import React, { useState, useCallback, useMemo } from "react";
-import { Route, Switch } from "react-router-dom";
-import InfoPage from "./pages/InfoPage";
-import ProjectPage from "./pages/ProjectPage";
-import SkillsPage from "./pages/SkillsPage";
-import { CssBaseline, Typography } from "@material-ui/core";
+import { useLocation } from "react-router-dom";
+import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { routerPath } from "./config/GlobalVariables";
-import {
-  createMuiTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-} from "@material-ui/core/styles";
+import { containerMapper } from "./config/GlobalVariables";
+import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
+import { containerProvider } from "./container/provider";
+
+function getContainer(pathname: string, defaultTabId: string) {
+  let selectedTabId = pathname.split("/").pop() ?? defaultTabId;
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  if (containerMapper[selectedTabId] === undefined) {
+    selectedTabId = defaultTabId;
+  }
+
+  return containerMapper[selectedTabId];
+}
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-
+  const location = useLocation();
   const classes = useCustomStyles();
   let theme = useMemo(
     () =>
@@ -28,56 +33,34 @@ function App() {
       }),
     [darkMode]
   );
-
+  let containerInfo = useMemo(() => getContainer(location.pathname, "info"), [location.pathname]);
+  const Container = containerProvider[containerInfo.name];
   // for Responsive font size
   theme = responsiveFontSizes(theme);
   const handleMode = useCallback(() => {
-    setDarkMode((state) => (state = !state));
+    setDarkMode(state => (state = !state));
   }, []);
   const handleDrawerToggle = useCallback(
     (windowWidth: number) => {
       // 현재 윈도우 크기가 breakpoints보다 크면 toggle 기능 차단
       // mobile page에서 메뉴 선택 후 토글 하기 위함
       if (windowWidth > theme.breakpoints.width("sm")) return;
-      setMobileOpen((state) => (state = !state));
+      setMobileOpen(state => (state = !state));
     },
     [theme]
   );
-
-  const { infoPath, projectPath, skillsPath } = routerPath;
 
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
-        <CustomAppBar
-          handleDrawerToggle={handleDrawerToggle}
-          handleMode={handleMode}
-          darkMode={darkMode}
-        />
+        <CustomAppBar handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
         <nav className={classes.drawer} aria-label="developer info">
-          <CustomDrawer
-            handleDrawerToggle={handleDrawerToggle}
-            theme={theme}
-            mobileOpen={mobileOpen}
-          />
+          <CustomDrawer handleDrawerToggle={handleDrawerToggle} theme={theme} mobileOpen={mobileOpen} />
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Switch>
-            <Route path={infoPath} component={InfoPage} exact />
-
-            <Route path={projectPath} component={ProjectPage} />
-
-            <Route path={skillsPath} component={SkillsPage} />
-            <Route
-              render={() => (
-                <Typography variant="h2">
-                  존재하지 않는 페이지입니다.
-                </Typography>
-              )}
-            />
-          </Switch>
+          <Container state={containerInfo.state} />
         </main>
       </div>
     </ThemeProvider>

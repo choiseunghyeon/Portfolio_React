@@ -46,3 +46,8 @@
 - Portfolio UI를 구성할 수 있는 Data를 만들어주는 설정 UI 구성
 - 테스트 적용
 - StoryBook Design System 적용
+
+# 목표
+
+- data를 기반으로 UI Render
+- 포트폴리오 사이트를 만들고 싶은 일반인도 사용할 수 있도록 data 만들어주는 UI 구현

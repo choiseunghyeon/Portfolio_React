@@ -5,47 +5,24 @@ const portfolioPage = require("../styles/images/portfolio.PNG");
 const profilePicture = require("../styles/images/profilePicture.jpg");
 const multiProject = require("../styles/images/multiProject.png");
 /* eslint-disable import/first */
-import {
-  SiTypescript,
-  SiReact,
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiFlutter,
-  SiJquery,
-  SiMongodb,
-} from "react-icons/si";
-import {
-  FaVuejs,
-  FaNode,
-  FaInstagram,
-  FaGithub,
-  FaBloggerB,
-  FaAppStoreIos,
-  FaGooglePlay,
-  FaMicrosoft,
-} from "react-icons/fa";
-import {
-  EmojiPeople,
-  LaptopMac,
-  AccountBalance,
-  Https,
-  AccountCircle,
-} from "@material-ui/icons";
+import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJquery, SiMongodb } from "react-icons/si";
+import { FaVuejs, FaNode, FaInstagram, FaGithub, FaBloggerB, FaAppStoreIos, FaGooglePlay, FaMicrosoft } from "react-icons/fa";
+import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
-import {
-  DeveloperInfo,
-  ProejctInfo,
-  TimeLine,
-  SkillsInfo,
-  RouterPath,
-} from "./Type";
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, RouterPath, IMapContainer } from "./Type";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
 
     https://icons8.com/icons/
  */
+
+export const tabsInfo: any = [
+  { id: "info", title: "INFO" },
+  { id: "project", title: "PROJECT" },
+  { id: "skills", title: "SKILLS" },
+];
+
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",
@@ -73,26 +50,10 @@ export const projectInfo: ProejctInfo[] = [
   {
     title: "Smart Mirror",
     subtitle: "기획, 개발, 디자인 최승현",
-    description:
-      "뷰티 유투버를 보면서 화장하는 누나의 모습이 안쓰러워 제작하기 시작하였습니다. 군대에 있을 때 제작하였으며 하드웨어, 소프트웨어까지 직접 제작하였습니다. ",
+    description: "뷰티 유투버를 보면서 화장하는 누나의 모습이 안쓰러워 제작하기 시작하였습니다. 군대에 있을 때 제작하였으며 하드웨어, 소프트웨어까지 직접 제작하였습니다. ",
     imageSrc: smartmirror,
-    skills: [
-      "Vue.js",
-      "Vuex",
-      "Vuetify",
-      "SocketIO",
-      "Node.js(express)",
-      "MongoDB",
-    ],
-    functions: [
-      "날씨",
-      "시간",
-      "미세먼지",
-      "유튜브 영상 검색 및 재생",
-      "영상 제어(멈춤, 시작, 10초 앞-뒤로 이동 등)",
-      "영상 저장",
-      "무드등 제어",
-    ],
+    skills: ["Vue.js", "Vuex", "Vuetify", "SocketIO", "Node.js(express)", "MongoDB"],
+    functions: ["날씨", "시간", "미세먼지", "유튜브 영상 검색 및 재생", "영상 제어(멈춤, 시작, 10초 앞-뒤로 이동 등)", "영상 저장", "무드등 제어"],
     icons: [
       {
         href: "https://webigotr.tistory.com/246",
@@ -114,22 +75,15 @@ export const projectInfo: ProejctInfo[] = [
     description:
       "학교 앞에서 자취 생활을 오래 하다 보니 매일 뭐 먹을지 고민하는 제 자신과 주변 사람을 많이 보게 되었습니다. 그래서 이러한 고민을 해결하고자 오늘 뭐 먹지? 라는 어플을 제작하게 되었습니다.",
     skills: ["Flutter"],
-    functions: [
-      "음식점-카페-술집 리스트",
-      "선택된 가게 랜덤 선택",
-      "google Map에서 가게 위치 확인",
-      "가게 정보 확인 및 전화",
-    ],
+    functions: ["음식점-카페-술집 리스트", "선택된 가게 랜덤 선택", "google Map에서 가게 위치 확인", "가게 정보 확인 및 전화"],
     imageSrc: whatToEat,
     icons: [
       {
-        href:
-          "https://apps.apple.com/kr/app/%EB%B0%B1%EC%84%9D%EB%8C%80-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1516435354",
+        href: "https://apps.apple.com/kr/app/%EB%B0%B1%EC%84%9D%EB%8C%80-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1516435354",
         icon: <FaAppStoreIos />,
       },
       {
-        href:
-          "https://play.google.com/store/apps/details?id=firstApp.whatToEat_byChoi",
+        href: "https://play.google.com/store/apps/details?id=firstApp.whatToEat_byChoi",
         icon: <FaGooglePlay />,
       },
     ],
@@ -137,8 +91,7 @@ export const projectInfo: ProejctInfo[] = [
   {
     title: "Portfolio",
     subtitle: "기획, 개발, 디자인 최승현",
-    description:
-      "자신을 어떻게 어필할지 고민하는 개발자들을 위해 포트폴리오 플랫폼이 있으면 좋겠다고 생각하여 제작하게 되었습니다.",
+    description: "자신을 어떻게 어필할지 고민하는 개발자들을 위해 포트폴리오 플랫폼이 있으면 좋겠다고 생각하여 제작하게 되었습니다.",
     imageSrc: portfolioPage,
     skills: ["React.js", "MATERIAL-UI"],
     functions: ["개발자 소개 페이지", "프로젝트 소개 페이지", "스킬셋 페이지"],
@@ -236,8 +189,7 @@ export const timeLineItems: TimeLine[] = [
     id: 3,
     year: "2017년 ~ 2018년",
     title: "군대 입대 및 전역",
-    body:
-      "경찰청 사이버 수사 기획에서 근무 / 실적 취합 사이트 개발 및 유지보수",
+    body: "경찰청 사이버 수사 기획에서 근무 / 실적 취합 사이트 개발 및 유지보수",
     icon: <EmojiPeople />,
   },
   {
@@ -246,12 +198,7 @@ export const timeLineItems: TimeLine[] = [
     title: "Smart Mirror 개발",
     body: "하드웨어 및 소프트웨어 제작 / Full Stack 개발",
     textAlignLeft: true,
-    component: (
-      <SkillFuncItems
-        skills={projectInfo[0].skills}
-        functions={projectInfo[0].functions}
-      />
-    ),
+    component: <SkillFuncItems skills={projectInfo[0].skills} functions={projectInfo[0].functions} />,
     icon: <LaptopMac />,
   },
   {
@@ -259,12 +206,7 @@ export const timeLineItems: TimeLine[] = [
     year: "2020년",
     title: "오늘 뭐 먹지? 개발",
     body: "",
-    component: (
-      <SkillFuncItems
-        skills={projectInfo[1].skills}
-        functions={projectInfo[1].functions}
-      />
-    ),
+    component: <SkillFuncItems skills={projectInfo[1].skills} functions={projectInfo[1].functions} />,
 
     icon: <LaptopMac />,
   },
@@ -290,4 +232,22 @@ export const routerPath: RouterPath = {
   infoPath: [REPO_NAME, REPO_NAME + "/info", "/"],
   projectPath: [REPO_NAME + "/project", "/project"],
   skillsPath: [REPO_NAME + "/skills", "/skills"],
+};
+
+export const containerMapper: IMapContainer = {
+  info: {
+    type: "info",
+    name: "InfoContainer",
+    state: timeLineItems,
+  },
+  project: {
+    type: "project",
+    name: "ProjectContainer",
+    state: projectInfo,
+  },
+  skills: {
+    type: "skills",
+    name: "SkillContainer",
+    state: skillsInfo,
+  },
 };

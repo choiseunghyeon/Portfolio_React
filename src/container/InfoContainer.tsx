@@ -1,14 +1,13 @@
 import React from "react";
 import MyTimeLine from "../components/info/MyTimeLine";
-import { timeLineItems } from "../config/GlobalVariables";
 import Greeting from "../components/info/Greeting";
-function InfoPage() {
+function InfoContainer({ state }: any) {
   return (
     <>
       <Greeting />
-      <MyTimeLine items={timeLineItems} />
+      <MyTimeLine items={state} />
     </>
   );
 }
 
-export default InfoPage;
+export default InfoContainer;

@@ -43,3 +43,13 @@ export type RouterPath = {
   projectPath: string[];
   skillsPath: string[];
 };
+
+export interface IMapContainer {
+  [key: string]: IContainer;
+}
+
+interface IContainer {
+  type: string;
+  name: string;
+  state: any;
+}
