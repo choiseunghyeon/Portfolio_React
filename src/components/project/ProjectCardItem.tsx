@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import {
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Collapse,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import { Grid, Card, CardHeader, CardActions, CardContent, CardMedia, Collapse, Typography, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import SkillFuncItems from "../common/SkillFuncItems";
@@ -21,7 +11,7 @@ type ProjectCardItemProps = {
   item: ProejctInfo;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   headerRoot: {
     display: "flex",
     padding: "16px 16px 0 16px",
@@ -59,33 +49,12 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const {
-    title,
-    subtitle,
-    description,
-    skills,
-    functions,
-    icons,
-    imageSrc,
-  } = item;
+  const { title, subtitle, description, skills, functions, icons, imageSrc } = item;
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={4}>
       <Card>
-        <div className={classes.mediaBox}>
-          {imageSrc && (
-            <CardMedia
-              image={imageSrc}
-              title="project image"
-              component="img"
-              className={classes.mediaFill}
-            />
-          )}
-        </div>
-        <CardHeader
-          title={title}
-          subheader={subtitle}
-          className={classes.bottomPaddingZero}
-        />
+        <div className={classes.mediaBox}>{imageSrc && <CardMedia image={imageSrc} title="project image" component="img" className={classes.mediaFill} />}</div>
+        <CardHeader title={title} subheader={subtitle} className={classes.bottomPaddingZero} />
         <CardContent className={classes.bottomPaddingZero}>
           <Typography variant="body2" color="textSecondary" component="p">
             {description}
@@ -104,8 +73,7 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
             })}
             onClick={handleExpandClick}
             aria-expanded={expanded}
-            aria-label="show more"
-          >
+            aria-label="show more">
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>

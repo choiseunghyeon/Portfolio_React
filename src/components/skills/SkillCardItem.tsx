@@ -26,7 +26,7 @@ function SkillCardItem({ iconInfo }: SkillCardItem) {
     <Grid item xs={12} md={2}>
       <Card className={classes.customCard}>
         <Anchor iconInfo={iconInfo} fontSize="3.4rem" />
-        <Typography variant="h5" component="h2">
+        <Typography noWrap variant="h5" component="h2">
           {title}
         </Typography>
         {/* <LinearProgress variant="determinate" value={75} /> */}

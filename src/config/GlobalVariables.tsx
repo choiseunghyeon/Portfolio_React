@@ -5,9 +5,9 @@ const portfolioPage = require("../styles/images/portfolio.PNG");
 const profilePicture = require("../styles/images/profilePicture.jpg");
 const multiProject = require("../styles/images/multiProject.png");
 /* eslint-disable import/first */
-import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJquery, SiMongodb } from "react-icons/si";
+import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJquery, SiMongodb, SiVisualstudiocode } from "react-icons/si";
 import { FaVuejs, FaNode, FaInstagram, FaGithub, FaBloggerB, FaAppStoreIos, FaGooglePlay, FaMicrosoft } from "react-icons/fa";
-import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle } from "@material-ui/icons";
+import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle, Code, ContactMail, Restaurant, Business } from "@material-ui/icons";
 import SkillFuncItems from "../components/common/SkillFuncItems";
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, RouterPath, IMapContainer } from "./Type";
 /*
@@ -155,6 +155,10 @@ export const skillsInfo: SkillsInfo = {
       icon: <SiTypescript />,
     },
     {
+      title: "VSC",
+      icon: <SiVisualstudiocode />,
+    },
+    {
       title: "Flutter",
       icon: <SiFlutter />,
     },
@@ -208,21 +212,35 @@ export const timeLineItems: TimeLine[] = [
     body: "",
     component: <SkillFuncItems skills={projectInfo[1].skills} functions={projectInfo[1].functions} />,
 
-    icon: <LaptopMac />,
+    icon: <Restaurant />,
   },
   {
     id: 7,
-    year: "2020년 11월 16일",
-    title: "이카운트 입사",
-    body: "자체 프론트엔드 프레임워크 신규 기능 개발 및 유지 보수",
-    icon: <AccountCircle />,
+    year: "2020년 8월 26일",
+    title: "포트폴리오 페이지 개발",
+    body: "데이터 기반 포트폴리오 렌더링 페이지",
+    icon: <ContactMail />,
   },
   {
     id: 8,
+    year: "2020년 11월 16일",
+    title: "이카운트 입사",
+    body: "자체 프론트엔드 프레임워크 신규 기능 개발 및 유지 보수",
+    icon: <Business />,
+  },
+  {
+    id: 9,
     year: "2021년 10월 12일",
     title: "이카운트 신규 프로젝트 진행",
     body: "자체 프론트엔드 프레임워크 신규 기능 개발 / 리팩토링 / 테스트 코드 설계 및 작성",
     icon: <AccountCircle />,
+  },
+  {
+    id: 10,
+    year: "2021년 11월 21일",
+    title: "Visual Studio Code Extension Multi Project 개발",
+    body: "파일, 폴더 관리 및 이동 간편화 ",
+    icon: <Code />,
   },
 ];
 
