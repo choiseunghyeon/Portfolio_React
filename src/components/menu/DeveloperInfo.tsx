@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import Anchor from "../common/Anchor";
-import { developerInfo } from "../../config/GlobalVariables";
+import { developerInfo } from "../../asset/data/GlobalVariables";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },
   large: {
     width: theme.spacing(7),
@@ -25,13 +25,7 @@ const DeveloperInfo = () => {
   const classes = useStyles();
   return (
     <div className={classes.infoStyle}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={1}
-      >
+      <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
         <Grid item xs={12} className={classes.marginLeftRight}>
           <img src={imageSrc} className={classes.image} alt="person" />
         </Grid>

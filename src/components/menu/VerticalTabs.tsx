@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Tabs, Tab } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { routerPath } from "../../config/GlobalVariables";
+import { routerPath } from "../../asset/data/GlobalVariables";
 const useStyles = makeStyles(() => ({
   // max-width가 264px로 되어 있음 따라서 레이아웃에서 중간에 위치하지 못함
   maxWidth: {
@@ -32,20 +32,9 @@ export default function VerticalTabs({ handleDrawerToggle }: any) {
   };
 
   return (
-    <Tabs
-      orientation="vertical"
-      variant="scrollable"
-      value={value}
-      onChange={handleChange}
-      aria-label="Vertical tabs example"
-    >
+    <Tabs orientation="vertical" variant="scrollable" value={value} onChange={handleChange} aria-label="Vertical tabs example">
       {tabItems.map((text, idx) => (
-        <Tab
-          className={classes.maxWidth}
-          label={text}
-          {...a11yProps(idx)}
-          component={Link}
-        />
+        <Tab className={classes.maxWidth} label={text} {...a11yProps(idx)} component={Link} />
       ))}
     </Tabs>
   );

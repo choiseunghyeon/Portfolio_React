@@ -1,15 +1,15 @@
 import React from "react";
-const smartmirror = require("../styles/images/smartMirror.PNG");
-const whatToEat = require("../styles/images/whatToEat.PNG");
-const portfolioPage = require("../styles/images/portfolio.PNG");
-const profilePicture = require("../styles/images/profilePicture.jpg");
-const multiProject = require("../styles/images/multiProject.png");
+import profilePicture from "../images/profilePicture.jpg";
+import smartmirror from "../images/smartMirror.png";
+import whatToEat from "../images/whatToEat.png";
+import portfolioPage from "../images/portfolio.png";
+import multiProject from "../images/multiProject.png";
 /* eslint-disable import/first */
 import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJquery, SiMongodb, SiVisualstudiocode } from "react-icons/si";
 import { FaVuejs, FaNode, FaInstagram, FaGithub, FaBloggerB, FaAppStoreIos, FaGooglePlay, FaMicrosoft } from "react-icons/fa";
 import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle, Code, ContactMail, Restaurant, Business } from "@material-ui/icons";
-import SkillFuncItems from "../components/common/SkillFuncItems";
-import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, RouterPath, IMapContainer } from "./Type";
+import SkillFuncItems from "../../components/common/SkillFuncItems";
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, RouterPath, IMapContainer } from "../../config/Type";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free

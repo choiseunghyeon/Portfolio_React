@@ -4,7 +4,7 @@ import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { containerMapper } from "./config/GlobalVariables";
+import { containerMapper } from "./asset/data/GlobalVariables";
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
 
