@@ -10,9 +10,12 @@ type CustomDrawerProps = {
   theme: Theme;
   mobileOpen: boolean;
   developerInfo: DeveloperInfo;
+  tabTitles: string[];
+  activeTabTitle: string;
+  onChangeTab: Function;
 };
 
-export default function CustomDrawer({ handleDrawerToggle, theme, mobileOpen, developerInfo }: CustomDrawerProps) {
+export default function CustomDrawer({ handleDrawerToggle, theme, mobileOpen, developerInfo, tabTitles, activeTabTitle, onChangeTab }: CustomDrawerProps) {
   const classes = useCustomStyles();
   const onClose = (event: any) => {
     handleDrawerToggle(event.view.innerWidth);
@@ -33,7 +36,7 @@ export default function CustomDrawer({ handleDrawerToggle, theme, mobileOpen, de
             keepMounted: true, // Better open performance on mobile.
           }}>
           <DeveloperProfile {...developerInfo} />
-          <VerticalTabs handleDrawerToggle={handleDrawerToggle} />
+          <VerticalTabs handleDrawerToggle={handleDrawerToggle} tabTitles={tabTitles} activeTabTitle={activeTabTitle} onChangeTab={onChangeTab} />
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation="css">
@@ -44,7 +47,7 @@ export default function CustomDrawer({ handleDrawerToggle, theme, mobileOpen, de
           variant="permanent"
           open>
           <DeveloperProfile {...developerInfo} />
-          <VerticalTabs handleDrawerToggle={handleDrawerToggle} />
+          <VerticalTabs handleDrawerToggle={handleDrawerToggle} tabTitles={tabTitles} activeTabTitle={activeTabTitle} onChangeTab={onChangeTab} />
         </Drawer>
       </Hidden>
     </>

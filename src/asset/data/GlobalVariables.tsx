@@ -9,19 +9,13 @@ import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJque
 import { FaVuejs, FaNode, FaInstagram, FaGithub, FaBloggerB, FaAppStoreIos, FaGooglePlay, FaMicrosoft } from "react-icons/fa";
 import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle, Code, ContactMail, Restaurant, Business } from "@material-ui/icons";
 import SkillFuncItems from "../../components/common/SkillFuncItems";
-import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, RouterPath, IMapContainer } from "../../config/Type";
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";
 /*
     icon info
     https://fontawesome.com/icons?d=gallery&s=brands&m=free
 
     https://icons8.com/icons/
  */
-
-export const tabsInfo: any = [
-  { id: "info", title: "INFO" },
-  { id: "project", title: "PROJECT" },
-  { id: "skills", title: "SKILLS" },
-];
 
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
@@ -244,28 +238,23 @@ export const timeLineItems: TimeLine[] = [
   },
 ];
 
-// type your github repository name. it will be your static site default path
-const REPO_NAME: string = "/Portfolio_React";
-export const routerPath: RouterPath = {
-  infoPath: [REPO_NAME, REPO_NAME + "/info", "/"],
-  projectPath: [REPO_NAME + "/project", "/project"],
-  skillsPath: [REPO_NAME + "/skills", "/skills"],
-};
-
-export const containerMapper: IMapContainer = {
-  info: {
+export const containerMapperList: IContainer[] = [
+  {
     type: "info",
-    name: "InfoContainer",
+    title: "INFO",
+    containerName: "InfoContainer",
     state: timeLineItems,
   },
-  project: {
+  {
     type: "project",
-    name: "ProjectContainer",
+    title: "PROJECT",
+    containerName: "ProjectContainer",
     state: projectInfo,
   },
-  skills: {
+  {
     type: "skills",
-    name: "SkillContainer",
+    title: "SKILLS",
+    containerName: "SkillContainer",
     state: skillsInfo,
   },
-};
+];

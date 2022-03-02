@@ -1,29 +1,33 @@
 import React, { useState, useCallback, useMemo } from "react";
-import { useLocation } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { containerMapper, developerInfo } from "./asset/data/GlobalVariables";
+import { containerMapperList, developerInfo } from "./asset/data/GlobalVariables";
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
+import { IContainer } from "./config/Type";
 
-function getContainer(pathname: string, defaultTabId: string) {
-  let selectedTabId = pathname.split("/").pop() ?? defaultTabId;
+function getContainer(activeTabTitle: string, containerMapperList: IContainer[]): IContainer {
+  const activeContainerInfo = containerMapperList.find(containerMapper => containerMapper.title === activeTabTitle);
+  return activeContainerInfo ?? containerMapperList[0];
+}
+function getFirstContainerTitle(containerMapperList: IContainer[]): string {
+  return containerMapperList[0].title;
+}
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  if (containerMapper[selectedTabId] === undefined) {
-    selectedTabId = defaultTabId;
-  }
-
-  return containerMapper[selectedTabId];
+function getContainerTitles(containerMapperList: IContainer[]): string[] {
+  return containerMapperList.map(containerMapper => containerMapper.title);
 }
 
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-  const [activeTabId, setActiveTabId] = useState<string | null>(null);
-  const location = useLocation();
+  const [activeTabTitle, setActiveTabTitle] = useState<string>(getFirstContainerTitle(containerMapperList));
+  const tabTitles = useMemo(() => getContainerTitles(containerMapperList), [containerMapperList]);
+  const onChangeTab = useCallback((e: any, value: string) => {
+    setActiveTabTitle(value);
+  }, []);
   const classes = useCustomStyles();
   let theme = useMemo(
     () =>
@@ -34,8 +38,8 @@ function App() {
       }),
     [darkMode]
   );
-  let containerInfo = useMemo(() => getContainer(location.pathname, "info"), [location.pathname]);
-  const Container = containerProvider[containerInfo.name];
+  let containerInfo = useMemo(() => getContainer(activeTabTitle, containerMapperList), [activeTabTitle, containerMapperList]);
+  const Container = containerProvider[containerInfo.containerName];
   // for Responsive font size
   theme = responsiveFontSizes(theme);
   const handleMode = useCallback(() => {
@@ -57,7 +61,15 @@ function App() {
         <CssBaseline />
         <CustomAppBar handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
         <nav className={classes.drawer} aria-label="developer info">
-          <CustomDrawer handleDrawerToggle={handleDrawerToggle} theme={theme} mobileOpen={mobileOpen} developerInfo={developerInfo} />
+          <CustomDrawer
+            tabTitles={tabTitles}
+            activeTabTitle={activeTabTitle}
+            onChangeTab={onChangeTab}
+            handleDrawerToggle={handleDrawerToggle}
+            theme={theme}
+            mobileOpen={mobileOpen}
+            developerInfo={developerInfo}
+          />
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
