@@ -34,7 +34,7 @@ export default function VerticalTabs({ handleDrawerToggle }: any) {
   return (
     <Tabs orientation="vertical" variant="scrollable" value={value} onChange={handleChange} aria-label="Vertical tabs example">
       {tabItems.map((text, idx) => (
-        <Tab className={classes.maxWidth} label={text} {...a11yProps(idx)} component={Link} />
+        <Tab data-testid="tab" className={classes.maxWidth} label={text} {...a11yProps(idx)} component={Link} />
       ))}
     </Tabs>
   );

@@ -22,6 +22,7 @@ function getContainer(pathname: string, defaultTabId: string) {
 function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+  const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const location = useLocation();
   const classes = useCustomStyles();
   let theme = useMemo(

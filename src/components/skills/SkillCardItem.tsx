@@ -23,7 +23,7 @@ function SkillCardItem({ iconInfo }: SkillCardItem) {
   const classes = useStyles();
   const { title } = iconInfo;
   return (
-    <Grid item xs={12} md={2}>
+    <Grid data-testid="skill" item xs={12} md={2}>
       <Card className={classes.customCard}>
         <Anchor iconInfo={iconInfo} fontSize="3.4rem" />
         <Typography noWrap variant="h5" component="h2">

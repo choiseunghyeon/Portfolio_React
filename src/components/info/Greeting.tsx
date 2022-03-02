@@ -20,13 +20,5 @@ export default function Greeting() {
       .type("Hi, This is my <b>portfolio</b> site")
       .go();
   }, []);
-  return (
-    <Typography
-      id="typehere"
-      variant="h2"
-      component="h2"
-      align="center"
-      gutterBottom
-    ></Typography>
-  );
+  return <Typography data-testid="greeting" id="typehere" variant="h2" component="h2" align="center" gutterBottom></Typography>;
 }

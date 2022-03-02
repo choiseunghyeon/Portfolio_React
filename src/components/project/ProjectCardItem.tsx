@@ -54,7 +54,7 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
   };
   const { title, subtitle, description, skills, functions, icons, imageSrc } = item;
   return (
-    <Grid item xs={12} md={4}>
+    <Grid data-testid="projectCardItem" item xs={12} md={4}>
       <Card>
         <div className={classes.mediaBox}>{imageSrc && <CardMedia image={imageSrc} title="project image" component="img" className={classes.mediaFill} />}</div>
         <CardHeader title={title} subheader={subtitle} className={classes.bottomPaddingZero} />
@@ -71,6 +71,7 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
               </div>
             ))}
           <IconButton
+            data-testid="projectCardItemExpand"
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
             })}

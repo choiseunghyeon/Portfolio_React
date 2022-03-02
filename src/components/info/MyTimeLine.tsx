@@ -1,14 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-} from "@material-ui/lab";
+import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@material-ui/lab";
 import { Paper, Typography, withWidth } from "@material-ui/core";
 import { TimeLine } from "../../config/Type";
 
@@ -45,13 +38,7 @@ const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
   const { year, title, body, component, textAlignLeft, icon } = item;
   const customClass = useStyles();
   return (
-    <TimelineItem
-      classes={
-        width === "xs"
-          ? { missingOppositeContent: customClass.zeroFlex }
-          : undefined
-      }
-    >
+    <TimelineItem data-testid="timelineItem" classes={width === "xs" ? { missingOppositeContent: customClass.zeroFlex } : undefined}>
       <TimelineSeparator>
         <TimelineDot color="primary" variant="outlined">
           {icon}
@@ -62,12 +49,7 @@ const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
         <Typography variant="body1" color="textSecondary">
           {year}
         </Typography>
-        <Paper
-          elevation={3}
-          className={`${customClass.paper} ${
-            textAlignLeft && customClass.textAlignLeft
-          }`}
-        >
+        <Paper elevation={3} className={`${customClass.paper} ${textAlignLeft && customClass.textAlignLeft}`}>
           <Typography variant="h6">{title}</Typography>
           <Typography variant="subtitle2">
             {body}
@@ -88,7 +70,7 @@ const MyTimeLine = React.memo(({ items, width }: MyTimeLineProps) => {
   console.log(width);
   return (
     <Timeline align={width === "xs" ? "left" : "alternate"}>
-      {items.map((item) => (
+      {items.map(item => (
         <MyTimeLineItem item={item} width={width} key={item.id} />
       ))}
     </Timeline>
