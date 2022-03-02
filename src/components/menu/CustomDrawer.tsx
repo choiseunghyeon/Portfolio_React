@@ -1,20 +1,18 @@
 import React from "react";
 import { Drawer, Hidden, Theme } from "@material-ui/core";
-import DeveloperInfo from "./DeveloperInfo";
+import DeveloperProfile from "./DeveloperProfile";
 import VerticalTabs from "./VerticalTabs";
 import useCustomStyles from "../../styles/Material-UI/style";
+import { DeveloperInfo } from "../../config/Type";
 
 type CustomDrawerProps = {
   handleDrawerToggle: (windowWidth: number) => void;
   theme: Theme;
   mobileOpen: boolean;
+  developerInfo: DeveloperInfo;
 };
 
-export default function CustomDrawer({
-  handleDrawerToggle,
-  theme,
-  mobileOpen,
-}: CustomDrawerProps) {
+export default function CustomDrawer({ handleDrawerToggle, theme, mobileOpen, developerInfo }: CustomDrawerProps) {
   const classes = useCustomStyles();
   const onClose = (event: any) => {
     handleDrawerToggle(event.view.innerWidth);
@@ -33,9 +31,8 @@ export default function CustomDrawer({
           }}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
-          }}
-        >
-          <DeveloperInfo />
+          }}>
+          <DeveloperProfile {...developerInfo} />
           <VerticalTabs handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
       </Hidden>
@@ -45,9 +42,8 @@ export default function CustomDrawer({
             paper: classes.drawerPaper,
           }}
           variant="permanent"
-          open
-        >
-          <DeveloperInfo />
+          open>
+          <DeveloperProfile {...developerInfo} />
           <VerticalTabs handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
       </Hidden>

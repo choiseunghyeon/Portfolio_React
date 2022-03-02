@@ -4,7 +4,7 @@ import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { containerMapper } from "./asset/data/GlobalVariables";
+import { containerMapper, developerInfo } from "./asset/data/GlobalVariables";
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
 
@@ -56,7 +56,7 @@ function App() {
         <CssBaseline />
         <CustomAppBar handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
         <nav className={classes.drawer} aria-label="developer info">
-          <CustomDrawer handleDrawerToggle={handleDrawerToggle} theme={theme} mobileOpen={mobileOpen} />
+          <CustomDrawer handleDrawerToggle={handleDrawerToggle} theme={theme} mobileOpen={mobileOpen} developerInfo={developerInfo} />
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />

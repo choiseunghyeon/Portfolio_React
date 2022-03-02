@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import Anchor from "../common/Anchor";
 import { developerInfo } from "../../asset/data/GlobalVariables";
+import { DeveloperInfo } from "../../config/Type";
 
 const useStyles = makeStyles(theme => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },
@@ -20,8 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const DeveloperInfo = () => {
-  const { title, subtitle, content, icons, imageSrc } = developerInfo;
+const DeveloperProfile = ({ title, subtitle, content, icons, imageSrc }: DeveloperInfo) => {
   const classes = useStyles();
   return (
     <div className={classes.infoStyle}>
@@ -53,4 +53,4 @@ const DeveloperInfo = () => {
   );
 };
 
-export default DeveloperInfo;
+export default DeveloperProfile;
