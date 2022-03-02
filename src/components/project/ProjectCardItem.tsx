@@ -46,6 +46,9 @@ const useStyles = makeStyles(theme => ({
 function ProjectCardItem({ item }: ProjectCardItemProps) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState<boolean>(false);
+
+  if (item === undefined) return null;
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };

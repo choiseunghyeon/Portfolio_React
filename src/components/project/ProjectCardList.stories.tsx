@@ -1,8 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ProjectCardList from "./ProjectCardList";
-import { stub as projectCaseItemStub } from "./ProjectCardItem.stories";
-
+import { projectCardItemStub } from "./__test__/stub";
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "ProjectCardList",
@@ -15,5 +14,5 @@ const Template: ComponentStory<typeof ProjectCardList> = args => <ProjectCardLis
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  items: [projectCaseItemStub, projectCaseItemStub],
+  items: [projectCardItemStub, projectCardItemStub],
 };
