@@ -4,6 +4,7 @@ import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@material-ui/lab";
 import { Paper, Typography, withWidth } from "@material-ui/core";
 import { TimeLine } from "../../config/Type";
+import IconComponent from "../common/IconComponent";
 
 const useStyles = makeStyles({
   paper: {
@@ -41,7 +42,7 @@ const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
     <TimelineItem data-testid="timelineItem" classes={width === "xs" ? { missingOppositeContent: customClass.zeroFlex } : undefined}>
       <TimelineSeparator>
         <TimelineDot color="primary" variant="outlined">
-          {icon}
+          <IconComponent icon={icon} />
         </TimelineDot>
         <TimelineConnector />
       </TimelineSeparator>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import Anchor from "../common/Anchor";
-import { developerInfo } from "../../asset/data/GlobalVariables";
 import { DeveloperInfo } from "../../config/Type";
 
 const useStyles = makeStyles(theme => ({
