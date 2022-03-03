@@ -1,7 +1,7 @@
 export type IconInfo = {
   href?: string;
   title?: string;
-  icon: JSX.Element;
+  icon: string;
 };
 type BasicInfo = {
   title: string;

@@ -5,9 +5,6 @@ import whatToEat from "../images/whatToEat.png";
 import portfolioPage from "../images/portfolio.png";
 import multiProject from "../images/multiProject.png";
 /* eslint-disable import/first */
-import { SiTypescript, SiReact, SiHtml5, SiCss3, SiJavascript, SiFlutter, SiJquery, SiMongodb, SiVisualstudiocode } from "react-icons/si";
-import { FaVuejs, FaNode, FaInstagram, FaGithub, FaBloggerB, FaAppStoreIos, FaGooglePlay, FaMicrosoft } from "react-icons/fa";
-import { EmojiPeople, LaptopMac, AccountBalance, Https, AccountCircle, Code, ContactMail, Restaurant, Business } from "@material-ui/icons";
 import SkillFuncItems from "../../components/common/SkillFuncItems";
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";
 /*
@@ -26,15 +23,15 @@ export const developerInfo: DeveloperInfo = {
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",
-      icon: <FaGithub />,
+      icon: "FaGithub",
     },
     {
       href: "https://webigotr.tistory.com/",
-      icon: <FaBloggerB />,
+      icon: "FaBloggerB",
     },
     {
       href: "https://www.instagram.com/chshyeon_0_0/?hl=ko",
-      icon: <FaInstagram />,
+      icon: "FaInstagram",
     },
   ],
 };
@@ -51,15 +48,15 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://webigotr.tistory.com/246",
-        icon: <FaGithub />,
+        icon: "FaGithub",
       },
       {
         href: "https://github.com/choiseunghyeon/smartmirror_vue",
-        icon: <FaBloggerB />,
+        icon: "FaBloggerB",
       },
       {
         href: "https://www.instagram.com/p/BjOeTGwnhWW/",
-        icon: <FaInstagram />,
+        icon: "FaInstagram",
       },
     ],
   },
@@ -74,11 +71,11 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://apps.apple.com/kr/app/%EB%B0%B1%EC%84%9D%EB%8C%80-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1516435354",
-        icon: <FaAppStoreIos />,
+        icon: "FaAppStoreIos",
       },
       {
         href: "https://play.google.com/store/apps/details?id=firstApp.whatToEat_byChoi",
-        icon: <FaGooglePlay />,
+        icon: "FaGooglePlay",
       },
     ],
   },
@@ -92,7 +89,7 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://github.com/choiseunghyeon/Portfolio_React",
-        icon: <FaGithub />,
+        icon: "FaGithub",
       },
     ],
   },
@@ -107,11 +104,11 @@ export const projectInfo: ProejctInfo[] = [
     icons: [
       {
         href: "https://marketplace.visualstudio.com/items?itemName=choiseunghyeon.multi-project",
-        icon: <FaMicrosoft />,
+        icon: "FaMicrosoft",
       },
       {
         href: "https://github.com/choiseunghyeon/vscode-multi-project",
-        icon: <FaGithub />,
+        icon: "FaGithub",
       },
     ],
   },
@@ -122,47 +119,47 @@ export const skillsInfo: SkillsInfo = {
   iconInfoList: [
     {
       title: "HTML5",
-      icon: <SiHtml5 />,
+      icon: "SiHtml5",
     },
     {
       title: "CSS3",
-      icon: <SiCss3 />,
+      icon: "SiCss3",
     },
     {
       title: "JavaScript",
-      icon: <SiJavascript />,
+      icon: "SiJavascript",
     },
     {
       title: "Vue",
-      icon: <FaVuejs />,
+      icon: "FaVuejs",
     },
     {
       title: "React",
-      icon: <SiReact />,
+      icon: "SiReact",
     },
     {
       title: "Node",
-      icon: <FaNode />,
+      icon: "FaNode",
     },
     {
       title: "TypeScript",
-      icon: <SiTypescript />,
+      icon: "SiTypescript",
     },
     {
       title: "VSC",
-      icon: <SiVisualstudiocode />,
+      icon: "SiVisualstudiocode",
     },
     {
       title: "Flutter",
-      icon: <SiFlutter />,
+      icon: "SiFlutter",
     },
     {
       title: "jQuery",
-      icon: <SiJquery />,
+      icon: "SiJquery",
     },
     {
       title: "MongoDB",
-      icon: <SiMongodb />,
+      icon: "SiMongodb",
     },
   ],
 };
@@ -174,21 +171,21 @@ export const timeLineItems: TimeLine[] = [
     year: "2015년",
     title: "백석대학교 입학",
     body: "ICT학부 정보보호학과 입학 및 정보보호 동아리(HUB) 가입",
-    icon: <AccountBalance />,
+    icon: "AccountBalance",
   },
   {
     id: 2,
     year: "2016년 ~ 2017년",
     title: "차세대 보안리더 양성프로그램(BOB) 진행",
     body: "BOB5기 교육 이수 및 웹 해킹 및 보안 프로젝트 진행",
-    icon: <Https />,
+    icon: "Https",
   },
   {
     id: 3,
     year: "2017년 ~ 2018년",
     title: "군대 입대 및 전역",
     body: "경찰청 사이버 수사 기획에서 근무 / 실적 취합 사이트 개발 및 유지보수",
-    icon: <EmojiPeople />,
+    icon: "EmojiPeople",
   },
   {
     id: 5,
@@ -197,7 +194,7 @@ export const timeLineItems: TimeLine[] = [
     body: "하드웨어 및 소프트웨어 제작 / Full Stack 개발",
     textAlignLeft: true,
     component: <SkillFuncItems skills={projectInfo[0].skills} functions={projectInfo[0].functions} />,
-    icon: <LaptopMac />,
+    icon: "LaptopMac",
   },
   {
     id: 6,
@@ -206,35 +203,35 @@ export const timeLineItems: TimeLine[] = [
     body: "",
     component: <SkillFuncItems skills={projectInfo[1].skills} functions={projectInfo[1].functions} />,
 
-    icon: <Restaurant />,
+    icon: "Restaurant",
   },
   {
     id: 7,
     year: "2020년 8월 26일",
     title: "포트폴리오 페이지 개발",
     body: "데이터 기반 포트폴리오 렌더링 페이지",
-    icon: <ContactMail />,
+    icon: "ContactMail",
   },
   {
     id: 8,
     year: "2020년 11월 16일",
     title: "이카운트 입사",
     body: "자체 프론트엔드 프레임워크 신규 기능 개발 및 유지 보수",
-    icon: <Business />,
+    icon: "Business",
   },
   {
     id: 9,
     year: "2021년 10월 12일",
     title: "이카운트 신규 프로젝트 진행",
     body: "자체 프론트엔드 프레임워크 신규 기능 개발 / 리팩토링 / 테스트 코드 설계 및 작성",
-    icon: <AccountCircle />,
+    icon: "AccountCircle",
   },
   {
     id: 10,
     year: "2021년 11월 21일",
     title: "Visual Studio Code Extension Multi Project 개발",
     body: "파일, 폴더 관리 및 이동 간편화 ",
-    icon: <Code />,
+    icon: "Code",
   },
 ];
 

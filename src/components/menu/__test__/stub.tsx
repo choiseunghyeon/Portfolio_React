@@ -10,15 +10,15 @@ export const developerInfoStub: DeveloperInfo = {
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",
-      icon: <FaGithub />,
+      icon: "FaGithub",
     },
     {
       href: "https://webigotr.tistory.com/",
-      icon: <FaBloggerB />,
+      icon: "FaBloggerB",
     },
     {
       href: "https://www.instagram.com/chshyeon_0_0/?hl=ko",
-      icon: <FaInstagram />,
+      icon: "FaInstagram",
     },
   ],
 };

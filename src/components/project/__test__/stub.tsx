@@ -12,15 +12,15 @@ export const projectCardItemStub: ProejctInfo = {
   icons: [
     {
       href: "https://webigotr.tistory.com/246",
-      icon: <FaGithub />,
+      icon: "FaGithub",
     },
     {
       href: "https://github.com/choiseunghyeon/smartmirror_vue",
-      icon: <FaBloggerB />,
+      icon: "FaBloggerB",
     },
     {
       href: "https://www.instagram.com/p/BjOeTGwnhWW/",
-      icon: <FaInstagram />,
+      icon: "FaInstagram",
     },
   ],
 };
