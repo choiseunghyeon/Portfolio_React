@@ -15,7 +15,11 @@
     "noEmit": true,
     "noImplicitAny": false,
     "jsx": "react",
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "baseUrl": "./",
+    "paths": {
+      "images": ["src/asset/images"]
+    }
   },
   "include": ["src"]
 }

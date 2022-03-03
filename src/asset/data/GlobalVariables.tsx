@@ -1,9 +1,9 @@
 import React from "react";
-import profilePicture from "../images/profilePicture.jpg";
-import smartmirror from "../images/smartMirror.png";
-import whatToEat from "../images/whatToEat.png";
-import portfolioPage from "../images/portfolio.png";
-import multiProject from "../images/multiProject.png";
+import profilePicture from "images/profilePicture.jpg";
+import smartmirror from "images/smartMirror.png";
+import whatToEat from "images/whatToEat.png";
+import portfolioPage from "images/portfolio.png";
+import multiProject from "images/multiProject.png";
 /* eslint-disable import/first */
 import SkillFuncItems from "../../components/common/SkillFuncItems";
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";

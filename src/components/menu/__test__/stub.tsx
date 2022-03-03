@@ -1,7 +1,5 @@
-import React from "react";
 import { DeveloperInfo } from "../../../config/Type";
-import profilePicture from "../../../asset/images/profilePicture.jpg";
-import { FaInstagram, FaGithub, FaBloggerB } from "react-icons/fa";
+import profilePicture from "images/profilePicture.jpg";
 export const developerInfoStub: DeveloperInfo = {
   title: "Front End Developer",
   subtitle: "최승현",

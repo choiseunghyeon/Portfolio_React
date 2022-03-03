@@ -1,7 +1,5 @@
-import React from "react";
 import { ProejctInfo } from "../../../config/Type";
-import smartmirror from "../../../asset/images/smartMirror.png";
-import { FaInstagram, FaGithub, FaBloggerB } from "react-icons/fa";
+import smartmirror from "images/smartMirror.png";
 export const projectCardItemStub: ProejctInfo = {
   title: "Smart Mirror",
   subtitle: "기획, 개발, 디자인 최승현",
