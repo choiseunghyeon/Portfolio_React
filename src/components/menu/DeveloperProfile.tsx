@@ -44,7 +44,7 @@ const DeveloperProfile = ({ title, subtitle, content, icons, imageSrc }: Develop
         </Grid>
         {icons.map((icon, idx) => (
           <Grid item xs={4} key={idx}>
-            <Anchor iconInfo={icon} fontSize="1.5rem" />
+            <Anchor {...icon} fontSize="1.5rem" />
           </Grid>
         ))}
       </Grid>

@@ -3,14 +3,14 @@ import { Grid } from "@material-ui/core";
 import ProjectCardItem from "./ProjectCardItem";
 import { ProejctInfo } from "../../config/Type";
 type ProjectCardListProps = {
-  items: ProejctInfo[];
+  projectInfoList: ProejctInfo[];
 };
 
-function ProjectCardList({ items }: ProjectCardListProps) {
+function ProjectCardList({ projectInfoList }: ProjectCardListProps) {
   return (
     <Grid container spacing={1}>
-      {items.map((item) => (
-        <ProjectCardItem key={item.title} item={item} />
+      {projectInfoList.map(projectInfo => (
+        <ProjectCardItem key={projectInfo.title} {...projectInfo} />
       ))}
     </Grid>
   );

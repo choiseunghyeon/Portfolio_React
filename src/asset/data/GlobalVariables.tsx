@@ -119,7 +119,7 @@ export const projectInfo: ProejctInfo[] = [
 
 // use it /src/pages/SkillsPage.js
 export const skillsInfo: SkillsInfo = {
-  iconInfoArray: [
+  iconInfoList: [
     {
       title: "HTML5",
       icon: <SiHtml5 />,

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Card, LinearProgress } from "@material-ui/core";
+import { Grid, Typography, Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { IconInfo } from "../../config/Type";
 import Anchor from "../common/Anchor";
@@ -19,13 +19,12 @@ const useStyles = makeStyles({
   },
 });
 
-function SkillCardItem({ iconInfo }: SkillCardItem) {
+function SkillCardItem({ icon, href, title }: IconInfo) {
   const classes = useStyles();
-  const { title } = iconInfo;
   return (
     <Grid data-testid="skill" item xs={12} md={2}>
       <Card className={classes.customCard}>
-        <Anchor iconInfo={iconInfo} fontSize="3.4rem" />
+        <Anchor icon={icon} href={href} fontSize="3.4rem" />
         <Typography noWrap variant="h5" component="h2">
           {title}
         </Typography>

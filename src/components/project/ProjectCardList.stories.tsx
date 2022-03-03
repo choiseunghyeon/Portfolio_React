@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof ProjectCardList> = args => <ProjectCardLis
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  items: [projectCardItemStub, projectCardItemStub],
+  projectInfoList: [projectCardItemStub, projectCardItemStub],
 };

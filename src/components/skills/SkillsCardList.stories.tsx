@@ -12,7 +12,5 @@ const Template: ComponentStory<typeof SkillsCardList> = args => <SkillsCardList 
 
 export const Default = Template.bind({});
 Default.args = {
-  items: {
-    iconInfoArray: [skillCardItemStub, skillCardItemStub],
-  },
+  iconInfoList: [skillCardItemStub, skillCardItemStub],
 };

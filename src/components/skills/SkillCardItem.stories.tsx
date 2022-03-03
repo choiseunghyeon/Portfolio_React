@@ -12,5 +12,5 @@ const Template: ComponentStory<typeof SkillCardItem> = args => <SkillCardItem {.
 
 export const Default = Template.bind({});
 Default.args = {
-  iconInfo: skillCardItemStub,
+  ...skillCardItemStub,
 };

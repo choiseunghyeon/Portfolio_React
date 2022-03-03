@@ -7,10 +7,6 @@ import SkillFuncItems from "../common/SkillFuncItems";
 import Anchor from "../common/Anchor";
 import { ProejctInfo } from "../../config/Type";
 
-type ProjectCardItemProps = {
-  item: ProejctInfo;
-};
-
 const useStyles = makeStyles(theme => ({
   headerRoot: {
     display: "flex",
@@ -43,16 +39,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ProjectCardItem({ item }: ProjectCardItemProps) {
+function ProjectCardItem({ description, functions, icons, imageSrc, skills, subtitle, title }: ProejctInfo) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState<boolean>(false);
-
-  if (item === undefined) return null;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const { title, subtitle, description, skills, functions, icons, imageSrc } = item;
+
   return (
     <Grid data-testid="projectCardItem" item xs={12} md={4}>
       <Card>
@@ -67,7 +61,7 @@ function ProjectCardItem({ item }: ProjectCardItemProps) {
           {icons &&
             icons.map((icon, index) => (
               <div key={index} style={{ padding: "0 8px" }}>
-                <Anchor iconInfo={icon} fontSize="1.45rem" />
+                <Anchor {...icon} fontSize="1.45rem" />
               </div>
             ))}
           <IconButton

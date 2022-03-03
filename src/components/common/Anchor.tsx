@@ -2,8 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { IconInfo } from "../../config/Type";
 
-type AnchorProps = {
-  iconInfo: IconInfo;
+type AnchorProps = IconInfo & {
   fontSize?: string;
 };
 
@@ -15,25 +14,19 @@ const useStyles = makeStyles<unknown, StyleProps>({
     display: "flex",
     justifyContent: "center",
     textDecoration: "none",
-    fontSize: (props) => props.size,
+    fontSize: props => props.size,
     color: "inherit",
     marginBottom: "10px",
   },
 });
 
-const Anchor = ({ iconInfo, fontSize }: AnchorProps) => {
+const Anchor = ({ icon, href, fontSize }: AnchorProps) => {
   const styleProps: StyleProps = { size: fontSize };
   const classes = useStyles(styleProps);
 
-  const { href, icon } = iconInfo;
   if (href) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes.anchorStyle}
-      >
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes.anchorStyle}>
         {icon}
       </a>
     );

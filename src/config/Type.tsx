@@ -33,7 +33,7 @@ export type TimeLine = {
 };
 
 export type SkillsInfo = {
-  iconInfoArray: IconInfo[];
+  iconInfoList: IconInfo[];
 };
 
 export type RouterPath = {
