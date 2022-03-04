@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import Anchor from "../common/Anchor";
 import { DeveloperInfo } from "../../config/Type";
-import { createImageSrc } from "src/utils/imageUtil";
 
 const useStyles = makeStyles(theme => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },
@@ -22,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DeveloperProfile = ({ title, subtitle, content, icons, imageSrc }: DeveloperInfo) => {
-  createImageSrc("123");
   const classes = useStyles();
   return (
     <div className={classes.infoStyle}>

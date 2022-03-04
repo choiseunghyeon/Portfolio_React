@@ -44,8 +44,7 @@
 - Masonry Layout PorjectCard 보여줄 때 적용
 - SEO 적용
 - Portfolio UI를 구성할 수 있는 Data를 만들어주는 설정 UI 구성
-- 테스트 적용
-- StoryBook Design System 적용
+- img src를 위한 webpack 설정 수정 필요함 (webpack.config.js, start.js, GlobalVariables.tsx)
 
 # 목표
 
