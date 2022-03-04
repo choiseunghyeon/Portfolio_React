@@ -24,6 +24,7 @@ const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -334,7 +335,7 @@ module.exports = function (webpackEnv) {
               loader: require.resolve("url-loader"),
               options: {
                 limit: imageInlineSizeLimit,
-                name: "static/media/[name].[hash:8].[ext]",
+                name: "static/media/[name].[ext]",
               },
             },
             // Process application JS with Babel.
@@ -504,6 +505,12 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
+      new CopyPlugin({
+        patterns: [
+          { from: path.resolve(paths.appSrc, "asset", "images"), to: path.resolve(paths.appBuild, "static", "images") },
+          { from: path.resolve(paths.appSrc, "asset", "images"), to: path.resolve(paths.appPublic, "static", "images") },
+        ],
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
@@ -551,6 +558,7 @@ module.exports = function (webpackEnv) {
         fileName: "asset-manifest.json",
         publicPath: paths.publicUrlOrPath,
         generate: (seed, files, entrypoints) => {
+          console.log(paths.publicUrlOrPath);
           const manifestFiles = files.reduce((manifest, file) => {
             manifest[file.name] = file.path;
             return manifest;

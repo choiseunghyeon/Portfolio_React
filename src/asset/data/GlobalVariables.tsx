@@ -1,9 +1,5 @@
 import React from "react";
-import profilePicture from "images/profilePicture.jpg";
-import smartmirror from "images/smartMirror.png";
-import whatToEat from "images/whatToEat.png";
-import portfolioPage from "images/portfolio.png";
-import multiProject from "images/multiProject.png";
+
 /* eslint-disable import/first */
 import SkillFuncItems from "../../components/common/SkillFuncItems";
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";
@@ -14,12 +10,13 @@ import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "..
     https://icons8.com/icons/
  */
 
+const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",
   subtitle: "최승현",
   content: "",
-  imageSrc: profilePicture,
+  imageSrc: `${LOCAL_IMAGE_PATH}/profilePicture.jpg`,
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",
@@ -42,7 +39,7 @@ export const projectInfo: ProejctInfo[] = [
     title: "Smart Mirror",
     subtitle: "기획, 개발, 디자인 최승현",
     description: "뷰티 유투버를 보면서 화장하는 누나의 모습이 안쓰러워 제작하기 시작하였습니다. 군대에 있을 때 제작하였으며 하드웨어, 소프트웨어까지 직접 제작하였습니다. ",
-    imageSrc: smartmirror,
+    imageSrc: `${LOCAL_IMAGE_PATH}/smartMirror.png`,
     skills: ["Vue.js", "Vuex", "Vuetify", "SocketIO", "Node.js(express)", "MongoDB"],
     functions: ["날씨", "시간", "미세먼지", "유튜브 영상 검색 및 재생", "영상 제어(멈춤, 시작, 10초 앞-뒤로 이동 등)", "영상 저장", "무드등 제어"],
     icons: [
@@ -67,7 +64,7 @@ export const projectInfo: ProejctInfo[] = [
       "학교 앞에서 자취 생활을 오래 하다 보니 매일 뭐 먹을지 고민하는 제 자신과 주변 사람을 많이 보게 되었습니다. 그래서 이러한 고민을 해결하고자 오늘 뭐 먹지? 라는 어플을 제작하게 되었습니다.",
     skills: ["Flutter"],
     functions: ["음식점-카페-술집 리스트", "선택된 가게 랜덤 선택", "google Map에서 가게 위치 확인", "가게 정보 확인 및 전화"],
-    imageSrc: whatToEat,
+    imageSrc: `${LOCAL_IMAGE_PATH}/whatToEat.png`,
     icons: [
       {
         href: "https://apps.apple.com/kr/app/%EB%B0%B1%EC%84%9D%EB%8C%80-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1516435354",
@@ -83,7 +80,7 @@ export const projectInfo: ProejctInfo[] = [
     title: "Portfolio",
     subtitle: "기획, 개발, 디자인 최승현",
     description: "자신을 어떻게 어필할지 고민하는 개발자들을 위해 포트폴리오 플랫폼이 있으면 좋겠다고 생각하여 제작하게 되었습니다.",
-    imageSrc: portfolioPage,
+    imageSrc: `${LOCAL_IMAGE_PATH}/portfolio.png`,
     skills: ["React.js", "MATERIAL-UI"],
     functions: ["개발자 소개 페이지", "프로젝트 소개 페이지", "스킬셋 페이지"],
     icons: [
@@ -98,7 +95,7 @@ export const projectInfo: ProejctInfo[] = [
     subtitle: "개발 최승현",
     description:
       "회사 프로젝트의 모듈들이 각 폴더로 분리되어 있어서 개발할 때는 VSC가 여러 개 실행됩니다.\n 각 폴더를 찾고 관리하는게 불편하여 하나의 VSC WorkSpace에서 여러 모듈을 관리하고 빠르게 이동하기 위해 개발하였습니다.",
-    imageSrc: multiProject,
+    imageSrc: `${LOCAL_IMAGE_PATH}/multiProject.png`,
     skills: ["TypeScript", "VSC Extension"],
     functions: ["폴더 관리", "폴더 이동", "북마크"],
     icons: [
