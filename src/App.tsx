@@ -3,10 +3,11 @@ import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { containerMapperList, developerInfo } from "./asset/data/GlobalVariables";
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
 import { IContainer } from "./config/Type";
+import { useSelector } from "react-redux";
+import { getDeveloper, getMapper } from "./store/selector";
 
 function getContainer(activeTabTitle: string, containerMapperList: IContainer[]): IContainer {
   const activeContainerInfo = containerMapperList.find(containerMapper => containerMapper.title === activeTabTitle);
@@ -21,6 +22,8 @@ function getContainerTitles(containerMapperList: IContainer[]): string[] {
 }
 
 function App() {
+  const developer = useSelector(getDeveloper);
+  const containerMapperList = useSelector(getMapper);
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [activeTabTitle, setActiveTabTitle] = useState<string>(getFirstContainerTitle(containerMapperList));
@@ -68,7 +71,7 @@ function App() {
             handleDrawerToggle={handleDrawerToggle}
             theme={theme}
             mobileOpen={mobileOpen}
-            developerInfo={developerInfo}
+            developerInfo={developer}
           />
         </nav>
         <main className={classes.content}>

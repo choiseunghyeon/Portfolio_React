@@ -1,7 +1,10 @@
 import React from "react";
 import MyTimeLine from "../components/info/MyTimeLine";
 import Greeting from "../components/info/Greeting";
-function InfoContainer({ state }: any) {
+import { useSelector } from "react-redux";
+import { getTimeline } from "src/store/selector";
+function InfoContainer() {
+  const state = useSelector(getTimeline);
   return (
     <>
       <Greeting />

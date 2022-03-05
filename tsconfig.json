@@ -18,7 +18,7 @@
     "types": ["cypress"],
     "baseUrl": "./",
     "paths": {
-      "images": ["src/asset/images"]
+      "asset": ["src/asset"]
     }
   },
   "include": ["src"]
