@@ -5,6 +5,7 @@ import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineC
 import { Paper, Typography, withWidth } from "@material-ui/core";
 import { TimeLine } from "../../config/Type";
 import IconComponent from "../common/IconComponent";
+import SkillFuncItems from "../common/SkillFuncItems";
 
 const useStyles = makeStyles({
   paper: {
@@ -31,12 +32,9 @@ type Width = {
   width: Breakpoint;
 };
 
-type MyTimeLineItemProps = Width & {
-  item: TimeLine;
-};
+type MyTimeLineItemProps = Width & TimeLine;
 
-const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
-  const { year, title, body, component, textAlignLeft, icon } = item;
+const MyTimeLineItem = React.memo(({ year, title, body, skills, functions, textAlignLeft, icon, width }: MyTimeLineItemProps) => {
   const customClass = useStyles();
   return (
     <TimelineItem data-testid="timelineItem" classes={width === "xs" ? { missingOppositeContent: customClass.zeroFlex } : undefined}>
@@ -54,7 +52,7 @@ const MyTimeLineItem = React.memo(({ item, width }: MyTimeLineItemProps) => {
           <Typography variant="h6">{title}</Typography>
           <Typography variant="subtitle2">
             {body}
-            <div>{component}</div>
+            {skills && functions && <SkillFuncItems skills={skills} functions={functions} />}
           </Typography>
         </Paper>
       </TimelineContent>
@@ -72,7 +70,7 @@ const MyTimeLine = React.memo(({ items, width }: MyTimeLineProps) => {
   return (
     <Timeline align={width === "xs" ? "left" : "alternate"}>
       {items.map(item => (
-        <MyTimeLineItem item={item} width={width} key={item.id} />
+        <MyTimeLineItem {...item} width={width} key={item.id} />
       ))}
     </Timeline>
   );

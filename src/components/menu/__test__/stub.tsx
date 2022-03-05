@@ -1,10 +1,9 @@
 import { DeveloperInfo } from "../../../config/Type";
-import profilePicture from "images/profilePicture.jpg";
 export const developerInfoStub: DeveloperInfo = {
   title: "Front End Developer",
   subtitle: "최승현",
   content: "",
-  imageSrc: profilePicture,
+  imageSrc: `/profilePicture.jpg`,
   icons: [
     {
       href: "https://github.com/choiseunghyeon/",

@@ -1,16 +1,6 @@
-import React from "react";
-
-/* eslint-disable import/first */
-import SkillFuncItems from "../../components/common/SkillFuncItems";
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";
-/*
-    icon info
-    https://fontawesome.com/icons?d=gallery&s=brands&m=free
 
-    https://icons8.com/icons/
- */
-
-const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
+export const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",
@@ -190,7 +180,8 @@ export const timeLineItems: TimeLine[] = [
     title: "Smart Mirror 개발",
     body: "하드웨어 및 소프트웨어 제작 / Full Stack 개발",
     textAlignLeft: true,
-    component: <SkillFuncItems skills={projectInfo[0].skills} functions={projectInfo[0].functions} />,
+    skills: projectInfo[0].skills,
+    functions: projectInfo[0].functions,
     icon: "LaptopMac",
   },
   {
@@ -198,8 +189,8 @@ export const timeLineItems: TimeLine[] = [
     year: "2020년",
     title: "오늘 뭐 먹지? 개발",
     body: "",
-    component: <SkillFuncItems skills={projectInfo[1].skills} functions={projectInfo[1].functions} />,
-
+    skills: projectInfo[1].skills,
+    functions: projectInfo[1].functions,
     icon: "Restaurant",
   },
   {

@@ -29,7 +29,8 @@ export type TimeLine = {
   body: string;
   icon: any;
   textAlignLeft?: boolean;
-  component?: JSX.Element;
+  skills?: string[];
+  functions?: string[];
 };
 
 export type SkillsInfo = {
