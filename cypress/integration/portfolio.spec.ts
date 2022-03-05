@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+// Mobile 따로 진행
 describe("first", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/Portfolio_React/");

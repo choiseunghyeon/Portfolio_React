@@ -60,13 +60,12 @@ const MyTimeLineItem = React.memo(({ year, title, body, skills, functions, textA
   );
 });
 
-type MyTimeLineProps = Width & {
+export type MyTimeLineProps = Width & {
   items: TimeLine[];
 };
 
 const MyTimeLine = React.memo(({ items, width }: MyTimeLineProps) => {
   // width에 현재 브라우저 크기 상태값이 들어 있음 (md, sm, lg 등)
-  console.log(width);
   return (
     <Timeline align={width === "xs" ? "left" : "alternate"}>
       {items.map(item => (
