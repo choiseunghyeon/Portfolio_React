@@ -3,7 +3,7 @@ import { Drawer, Hidden, Theme } from "@material-ui/core";
 import DeveloperProfile from "./DeveloperProfile";
 import VerticalTabs from "./VerticalTabs";
 import useCustomStyles from "../../styles/Material-UI/style";
-import { DeveloperInfo } from "../../config/Type";
+import { DeveloperInfo } from "../../types/portfolio";
 
 type CustomDrawerProps = {
   handleDrawerToggle: (windowWidth: number) => void;

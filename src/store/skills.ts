@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { skillsInfo } from "src/asset/data/GlobalVariables";
-import { SkillsInfo } from "src/config/Type";
+import { SkillsInfo } from "src/types/portfolio";
 
 const skill = createSlice({
   name: "skill",

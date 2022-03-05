@@ -1,4 +1,4 @@
-import { ProejctInfo } from "../../../config/Type";
+import { ProejctInfo } from "../../../types/portfolio";
 export const projectCardItemStub: ProejctInfo = {
   title: "Smart Mirror",
   subtitle: "기획, 개발, 디자인 최승현",

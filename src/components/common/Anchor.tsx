@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { IconInfo } from "../../config/Type";
 import IconComponent from "./IconComponent";
+import { IconInfo } from "src/types/portfolio";
 
 type AnchorProps = IconInfo & {
   fontSize?: string;

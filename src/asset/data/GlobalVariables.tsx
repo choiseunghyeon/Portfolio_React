@@ -1,4 +1,4 @@
-import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../config/Type";
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../types/portfolio";
 
 export const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
 // use it /src/components/menu/DeveloperInfo.js

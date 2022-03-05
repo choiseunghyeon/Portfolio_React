@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { timeLineItems } from "src/asset/data/GlobalVariables";
-import { TimeLine } from "src/config/Type";
+import { TimeLine } from "src/types/portfolio";
 
 const timeline = createSlice({
   name: "timeline",

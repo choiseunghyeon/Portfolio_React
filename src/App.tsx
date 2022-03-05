@@ -11,9 +11,9 @@ import { changeActiveTab } from "./store/app";
 
 function App() {
   const developer = useSelector(selectDeveloper);
-
   const { activeContainer, activeTabTitle, tabTitles } = useSelector(selectContainerInfo);
   const dispatch = useDispatch();
+
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const onChangeTab = useCallback((e: any, value: string) => {

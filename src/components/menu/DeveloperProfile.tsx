@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import Anchor from "../common/Anchor";
-import { DeveloperInfo } from "../../config/Type";
+import { DeveloperInfo } from "../../types/portfolio";
 
 const useStyles = makeStyles(theme => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },

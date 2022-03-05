@@ -1,4 +1,4 @@
-import { DeveloperInfo } from "../../../config/Type";
+import { DeveloperInfo } from "../../../types/portfolio";
 export const developerInfoStub: DeveloperInfo = {
   title: "Front End Developer",
   subtitle: "최승현",

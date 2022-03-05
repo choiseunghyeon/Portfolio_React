@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@material-ui/lab";
 import { Paper, Typography, withWidth } from "@material-ui/core";
-import { TimeLine } from "../../config/Type";
+import { TimeLine } from "../../types/portfolio";
 import IconComponent from "../common/IconComponent";
 import SkillFuncItems from "../common/SkillFuncItems";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import ProjectCardItem from "./ProjectCardItem";
-import { ProejctInfo } from "../../config/Type";
+import { ProejctInfo } from "../../types/portfolio";
 type ProjectCardListProps = {
   projectInfoList: ProejctInfo[];
 };

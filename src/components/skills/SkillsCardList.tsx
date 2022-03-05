@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import SkillCardItem from "./SkillCardItem";
-import { SkillsInfo } from "../../config/Type";
+import { SkillsInfo } from "../../types/portfolio";
 
 function SkillsCardList({ iconInfoList }: SkillsInfo) {
   return (

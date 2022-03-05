@@ -5,7 +5,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import SkillFuncItems from "../common/SkillFuncItems";
 import Anchor from "../common/Anchor";
-import { ProejctInfo } from "../../config/Type";
+import { ProejctInfo } from "../../types/portfolio";
 
 const useStyles = makeStyles(theme => ({
   headerRoot: {
