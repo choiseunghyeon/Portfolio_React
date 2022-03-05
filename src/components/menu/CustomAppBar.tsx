@@ -3,13 +3,14 @@ import { AppBar, Toolbar, IconButton, Typography, Button } from "@material-ui/co
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import useCustomStyles from "../../styles/Material-UI/style";
 
-type CustomAppBarProps = {
+export interface CustomAppBarProps {
   handleDrawerToggle: (windowWidth: number) => void;
   handleMode: () => void;
   darkMode: boolean;
-};
+  title: string;
+}
 
-export default function CustomAppBar({ handleDrawerToggle, handleMode, darkMode }: CustomAppBarProps) {
+export default function CustomAppBar({ title, handleDrawerToggle, handleMode, darkMode }: CustomAppBarProps) {
   const classes = useCustomStyles();
   const onClick = (event: any) => {
     handleDrawerToggle(event.view.innerWidth);
@@ -22,9 +23,9 @@ export default function CustomAppBar({ handleDrawerToggle, handleMode, darkMode 
             <AccountCircle fontSize="large" />
           </IconButton>
           <Typography variant="h5" className={classes.content}>
-            Portfolio
+            {title}
           </Typography>
-          <Button style={darkMode ? { color: "white" } : { color: "black" }} onClick={() => handleMode()}>
+          <Button data-testid="theme" style={darkMode ? { color: "white" } : { color: "black" }} onClick={() => handleMode()}>
             {darkMode ? "Light Mode" : "Dark Mode"}
           </Button>
         </Toolbar>

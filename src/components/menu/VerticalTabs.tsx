@@ -18,14 +18,14 @@ function a11yProps(index: number): any {
   };
 }
 
-interface VerticalTabsProps {
-  handleDrawerToggle: (windowWidth: number) => void;
+export interface VerticalTabsProps {
   tabTitles: string[];
   activeTabTitle: string;
   onChangeTab: Function;
+  handleDrawerToggle: Function;
 }
 
-export default function VerticalTabs({ tabTitles, activeTabTitle, onChangeTab, handleDrawerToggle }: any) {
+export default function VerticalTabs({ tabTitles, activeTabTitle, onChangeTab, handleDrawerToggle }: VerticalTabsProps) {
   const classes = useStyles();
   const handleChange = (event: any, newValue: number) => {
     onChangeTab(event, newValue);

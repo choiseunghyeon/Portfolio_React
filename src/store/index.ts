@@ -4,6 +4,7 @@ import { appReducer } from "./app";
 import { developerReducer } from "./developer";
 import { projectReducer } from "./project";
 import { skillReducer } from "./skills";
+import { styleReducer } from "./style";
 import { timelineReducer } from "./timeline";
 const rootReducer = combineReducers({
   app: appReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   timeline: timelineReducer,
   project: projectReducer,
   skill: skillReducer,
+  style: styleReducer,
 });
 const store = configureStore({ reducer: rootReducer });
 

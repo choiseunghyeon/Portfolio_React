@@ -1,39 +1,30 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import { CssBaseline } from "@material-ui/core";
 import useCustomStyles from "./styles/Material-UI/style";
 import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
-import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
 import { useDispatch, useSelector } from "react-redux";
-import { selectContainerInfo, selectDeveloper } from "./store/selector";
+import { selectContainerInfo, selectDeveloper, selectMuiTheme } from "./store/selector";
 import { changeActiveTab } from "./store/app";
+import { toggleDarkMode } from "./store/style";
 
 function App() {
   const developer = useSelector(selectDeveloper);
   const { activeContainer, activeTabTitle, tabTitles } = useSelector(selectContainerInfo);
+  const { darkMode, theme } = useSelector(selectMuiTheme);
   const dispatch = useDispatch();
+  const classes = useCustomStyles();
+  const Container = containerProvider[activeContainer.containerName];
 
-  const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const onChangeTab = useCallback((e: any, value: string) => {
     dispatch(changeActiveTab(value));
   }, []);
-  const classes = useCustomStyles();
-  let theme = useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: darkMode ? "dark" : "light",
-        },
-      }),
-    [darkMode]
-  );
-  const Container = containerProvider[activeContainer.containerName];
-  // for Responsive font size
-  theme = responsiveFontSizes(theme);
+
   const handleMode = useCallback(() => {
-    setDarkMode(state => (state = !state));
+    dispatch(toggleDarkMode());
   }, []);
   const handleDrawerToggle = useCallback(
     (windowWidth: number) => {
@@ -49,14 +40,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
-        <CustomAppBar handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
+        <CustomAppBar title="Portfolio" handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
         <nav className={classes.drawer} aria-label="developer info">
           <CustomDrawer
             tabTitles={tabTitles}
             activeTabTitle={activeTabTitle}
             onChangeTab={onChangeTab}
             handleDrawerToggle={handleDrawerToggle}
-            theme={theme}
+            direction={theme.direction}
             mobileOpen={mobileOpen}
             developerInfo={developer}
           />

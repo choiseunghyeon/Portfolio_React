@@ -5,6 +5,18 @@ describe("first", () => {
     cy.visit("http://localhost:3000/Portfolio_React/");
   });
 
+  it("Change Dark Mode into Light Mode", () => {
+    // Dark Mode is Default
+    cy.getBySel("theme").contains(/LIGHT MODE/i);
+    cy.get(".MuiPaper-root").should("have.css", "background-color", "rgb(66, 66, 66)");
+
+    // Change to Light Mode
+    cy.getBySel("theme")
+      .click()
+      .contains(/DARK MODE/i);
+    cy.get(".MuiPaper-root").should("have.css", "background-color", "rgb(255, 255, 255)");
+  });
+
   it("Default Activate Tab is first tab", () => {
     cy.getBySel("tab").first().should("have.attr", "aria-selected", "true");
   });
@@ -32,8 +44,4 @@ describe("first", () => {
     cy.getBySel("skill").should("have.length", 11);
     cy.getBySel("skill").first().contains("HTML5");
   });
-
-  // it("Change Dark Mode", () => {});
-
-  // it("Target Location should be valid", () => {});
 });
