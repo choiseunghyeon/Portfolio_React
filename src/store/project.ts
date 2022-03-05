@@ -3,7 +3,7 @@ import { projectInfo } from "src/asset/data/GlobalVariables";
 import { ProejctInfo } from "src/config/Type";
 
 const project = createSlice({
-  name: "mapper",
+  name: "project",
   initialState: projectInfo as ProejctInfo[],
   reducers: {},
 });

@@ -5,31 +5,19 @@ import CustomDrawer from "./components/menu/CustomDrawer";
 import CustomAppBar from "./components/menu/CustomAppBar";
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 import { containerProvider } from "./container/provider";
-import { IContainer } from "./config/Type";
-import { useSelector } from "react-redux";
-import { getDeveloper, getMapper } from "./store/selector";
-
-function getContainer(activeTabTitle: string, containerMapperList: IContainer[]): IContainer {
-  const activeContainerInfo = containerMapperList.find(containerMapper => containerMapper.title === activeTabTitle);
-  return activeContainerInfo ?? containerMapperList[0];
-}
-function getFirstContainerTitle(containerMapperList: IContainer[]): string {
-  return containerMapperList[0].title;
-}
-
-function getContainerTitles(containerMapperList: IContainer[]): string[] {
-  return containerMapperList.map(containerMapper => containerMapper.title);
-}
+import { useDispatch, useSelector } from "react-redux";
+import { selectContainerInfo, selectDeveloper } from "./store/selector";
+import { changeActiveTab } from "./store/app";
 
 function App() {
-  const developer = useSelector(getDeveloper);
-  const containerMapperList = useSelector(getMapper);
+  const developer = useSelector(selectDeveloper);
+
+  const { activeContainer, activeTabTitle, tabTitles } = useSelector(selectContainerInfo);
+  const dispatch = useDispatch();
   const [darkMode, setDarkMode] = useState<boolean>(true);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-  const [activeTabTitle, setActiveTabTitle] = useState<string>(getFirstContainerTitle(containerMapperList));
-  const tabTitles = useMemo(() => getContainerTitles(containerMapperList), [containerMapperList]);
   const onChangeTab = useCallback((e: any, value: string) => {
-    setActiveTabTitle(value);
+    dispatch(changeActiveTab(value));
   }, []);
   const classes = useCustomStyles();
   let theme = useMemo(
@@ -41,8 +29,7 @@ function App() {
       }),
     [darkMode]
   );
-  let containerInfo = useMemo(() => getContainer(activeTabTitle, containerMapperList), [activeTabTitle, containerMapperList]);
-  const Container = containerProvider[containerInfo.containerName];
+  const Container = containerProvider[activeContainer.containerName];
   // for Responsive font size
   theme = responsiveFontSizes(theme);
   const handleMode = useCallback(() => {
@@ -76,7 +63,7 @@ function App() {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Container state={containerInfo.state} />
+          <Container />
         </main>
       </div>
     </ThemeProvider>

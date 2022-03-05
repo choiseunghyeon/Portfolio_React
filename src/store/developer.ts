@@ -3,7 +3,7 @@ import { developerInfo } from "src/asset/data/GlobalVariables";
 import { DeveloperInfo } from "src/config/Type";
 
 const developer = createSlice({
-  name: "mapper",
+  name: "developer",
   initialState: developerInfo as DeveloperInfo,
   reducers: {},
 });

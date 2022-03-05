@@ -228,18 +228,15 @@ export const containerMapperList: IContainer[] = [
     type: "info",
     title: "INFO",
     containerName: "InfoContainer",
-    state: timeLineItems,
   },
   {
     type: "project",
     title: "PROJECT",
     containerName: "ProjectContainer",
-    state: projectInfo,
   },
   {
     type: "skills",
     title: "SKILLS",
     containerName: "SkillContainer",
-    state: skillsInfo,
   },
 ];

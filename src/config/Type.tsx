@@ -49,5 +49,4 @@ export interface IContainer {
   type: string;
   title: string;
   containerName: string;
-  state: any;
 }

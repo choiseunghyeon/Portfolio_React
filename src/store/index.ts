@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createStore, combineReducers } from "redux";
+import { combineReducers } from "redux";
+import { appReducer } from "./app";
 import { developerReducer } from "./developer";
-import { mapperReducer } from "./mapper";
 import { projectReducer } from "./project";
 import { skillReducer } from "./skills";
 import { timelineReducer } from "./timeline";
 const rootReducer = combineReducers({
+  app: appReducer,
   developer: developerReducer,
   timeline: timelineReducer,
-  mapper: mapperReducer,
   project: projectReducer,
   skill: skillReducer,
 });
