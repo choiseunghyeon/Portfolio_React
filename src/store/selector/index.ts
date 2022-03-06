@@ -1,10 +1,10 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectProject = state => state.project;
-export const selectTimeline = state => state.timeline;
-export const selectSkill = state => state.skill;
-export const selectDeveloper = state => state.developer;
+export const selectProject = state => state.app.project;
+export const selectTimeline = state => state.app.timeline;
+export const selectSkill = state => state.app.skill;
+export const selectDeveloper = state => state.app.developer;
 export const selectActiveContainer = state => state.app.activeContainer;
 export const selectContainerMapperList = state => state.app.containerMapperList;
 export const selectDarkMode = state => state.style.darkMode;

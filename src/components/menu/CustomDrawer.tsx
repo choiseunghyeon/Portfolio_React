@@ -4,6 +4,7 @@ import DeveloperProfile from "./DeveloperProfile";
 import VerticalTabs from "./VerticalTabs";
 import useCustomStyles from "../../styles/Material-UI/style";
 import { DeveloperInfo } from "../../types/portfolio";
+import DeveloperGitProfile from "./DeveloperGitProfile";
 
 export interface CustomDrawerProps {
   handleDrawerToggle: Function;
@@ -35,7 +36,8 @@ export default function CustomDrawer({ handleDrawerToggle, direction, mobileOpen
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          <DeveloperProfile {...developerInfo} />
+          {/* <DeveloperProfile {...developerInfo} /> */}
+          <DeveloperGitProfile />
           <VerticalTabs handleDrawerToggle={handleDrawerToggle} tabTitles={tabTitles} activeTabTitle={activeTabTitle} onChangeTab={onChangeTab} />
         </Drawer>
       </Hidden>
@@ -46,7 +48,8 @@ export default function CustomDrawer({ handleDrawerToggle, direction, mobileOpen
           }}
           variant="permanent"
           open>
-          <DeveloperProfile {...developerInfo} />
+          <DeveloperGitProfile />
+          {/* <DeveloperProfile {...developerInfo} /> */}
           <VerticalTabs handleDrawerToggle={handleDrawerToggle} tabTitles={tabTitles} activeTabTitle={activeTabTitle} onChangeTab={onChangeTab} />
         </Drawer>
       </Hidden>

@@ -105,6 +105,14 @@ export const projectInfo: ProejctInfo[] = [
 export const skillsInfo: SkillsInfo = {
   iconInfoList: [
     {
+      title: "Cypress",
+      icon: "SiCypress",
+    },
+    {
+      title: "Jest",
+      icon: "SiJest",
+    },
+    {
       title: "HTML5",
       icon: "SiHtml5",
     },

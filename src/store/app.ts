@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import produce from "immer";
-import { containerMapperList } from "src/asset/data/GlobalVariables";
+import { containerMapperList, developerInfo, projectInfo, skillsInfo, timeLineItems } from "src/asset/data/GlobalVariables";
 
 const initialState = {
   containerMapperList: containerMapperList,
   activeContainer: containerMapperList[0],
+  developer: developerInfo,
+  timeline: timeLineItems,
+  project: projectInfo,
+  skill: skillsInfo,
 };
 
 const app = createSlice({
