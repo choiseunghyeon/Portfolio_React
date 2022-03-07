@@ -1,10 +1,11 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
-import Anchor from "../common/Anchor";
-import { DeveloperInfo } from "../../types/portfolio";
 import { useQuery } from "react-query";
-import { getGitUser } from "src/api/http/git";
-import axios from "axios";
+import { fetchGitUser } from "src/api/http/git";
+import { IGitUser } from "src/types/response";
+import { useSelector } from "react-redux";
+import Anchor from "../common/Anchor";
+import IconComponent from "../common/IconComponent";
 
 const useStyles = makeStyles(theme => ({
   infoStyle: { textAlign: "center", margin: "24px 0 16px 0" },
@@ -25,18 +26,20 @@ const useStyles = makeStyles(theme => ({
 
 const DeveloperGitProfile = () => {
   const classes = useStyles();
-  const { status, data, error, isFetching } = useQuery("posts", async () => {
-    const data = await getGitUser("choiseunghyeon");
-    // const { data } = await axios.get("https:/api.gitub.com/users/choiseunghyeon");
-    // getGitUser("choiseunghyeon");
+  const username = useSelector(state => state.app.git.username);
+  const { status, data, error, isFetching } = useQuery<IGitUser>(["git", "users", username], async () => {
+    const data = await fetchGitUser(username);
+    if (data === undefined) {
+      throw new Error("data is undefined");
+    }
     return data;
   });
   return (
     <>
       {status === "loading" ? (
         "Loading..."
-      ) : status === "error" ? (
-        <span>Error</span>
+      ) : status === "error" || data === undefined ? (
+        <span>Error: ${error}</span>
       ) : (
         <div className={classes.infoStyle}>
           <Grid container direction="row" justify="center" alignItems="center" spacing={1}>
@@ -50,16 +53,20 @@ const DeveloperGitProfile = () => {
             </Grid>
             <Grid item xs={12} className={classes.marginLeftRight}>
               <Typography color="textSecondary" gutterBottom>
+                {data.login}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} className={classes.marginLeftRight}>
+              <Typography color="textPrimary" gutterBottom>
                 {data.bio}
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={4}>
               <Anchor icon="SiGithub" href={data.html_url} fontSize="1.5rem" />
-              <Typography component="span">{data.name}</Typography>
             </Grid>
-
-            {/* {icons.map((icon, idx) => (
-            ))} */}
+            <Grid item xs={4}>
+              <Anchor icon="FaLink" href={data.blog} fontSize="1.5rem" />
+            </Grid>
           </Grid>
           <Divider />
         </div>
