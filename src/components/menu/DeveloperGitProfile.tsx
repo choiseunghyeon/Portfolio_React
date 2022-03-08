@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Divider, makeStyles, Typography } from "@material-ui/core";
 import { useQuery } from "react-query";
-import { fetchGitUser } from "src/api/http/git";
+import { fetchGitUser } from "../../api/http/git";
 import { IGitUser } from "src/types/response";
 import { useSelector } from "react-redux";
 import Anchor from "../common/Anchor";
