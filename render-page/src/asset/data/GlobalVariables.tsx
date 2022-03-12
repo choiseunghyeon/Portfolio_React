@@ -1,7 +1,11 @@
 import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../types/portfolio";
 
 // export const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
-export const LOCAL_IMAGE_PATH = "/images";
+
+// githug page의 경우 url path를 가지고 있어서 이미지를 /images/abc.png가 아닌 /Portfolio_React/images/abc.png 와 같은 상대 경로로 가져와야 한다.
+// @TODO 임시 처리
+const DEFAULT_PATH = document.location.pathname;
+export const LOCAL_IMAGE_PATH = DEFAULT_PATH !== "/" ? DEFAULT_PATH + "/images" : "/images";
 // use it /src/components/menu/DeveloperInfo.js
 export const developerInfo: DeveloperInfo = {
   title: "Front End Developer",

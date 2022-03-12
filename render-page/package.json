@@ -1,5 +1,6 @@
 {
-  "name": "render-page",
+  "homepage": "https://choiseunghyeon.github.io/Portfolio_React",
+  "name": "portfolio-page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,7 +39,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "npm run build && gh-pages -d build",
+    "chromatic": "npx chromatic --project-token=bb0c40191b81"
   },
   "eslintConfig": {
     "extends": "react-app",
