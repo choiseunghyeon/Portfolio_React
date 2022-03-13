@@ -44,7 +44,7 @@ function ProjectCardItem({ description, functions, icons, imageSrc, skills, subt
               <IconComponent {...icon} fontSize="1.45rem" />
             </div>
           ))}
-        <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
+        <ExpandMore data-testid="projectCardItemExpand" expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>

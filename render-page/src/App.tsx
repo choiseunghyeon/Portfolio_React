@@ -30,7 +30,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", height: "100%" }}>
         <CssBaseline />
         <CustomAppBar title="Portfolio" handleDrawerToggle={handleDrawerToggle} handleMode={handleMode} darkMode={darkMode} />
         <nav aria-label="developer info">
@@ -51,7 +51,7 @@ function App() {
             padding: theme.spacing(3),
           }}>
           <Toolbar />
-          <Box sx={{ marginTop: "10px", marginLeft: "10px" }} />
+          {/* <Box sx={{ marginTop: "10px", marginLeft: "10px" }} /> */}
           <Container />
         </Box>
       </Box>
