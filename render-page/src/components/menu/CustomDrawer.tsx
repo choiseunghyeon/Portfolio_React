@@ -18,7 +18,6 @@ export interface CustomDrawerProps {
 }
 
 const drawerWidth = 240;
-// const container = window !== undefined ? () => window().document.body : undefined;
 export default function CustomDrawer({ handleDrawerToggle, direction, mobileOpen, developerInfo, tabTitles, activeTabTitle, onChangeTab }: CustomDrawerProps) {
   const theme = useTheme();
   const isMobileWidth = useMediaQuery(theme.breakpoints.down("sm"));

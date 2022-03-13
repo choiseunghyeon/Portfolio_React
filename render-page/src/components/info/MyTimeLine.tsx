@@ -6,6 +6,8 @@ import { TimeLine } from "../../types/portfolio";
 import IconComponent from "../common/IconComponent";
 import SkillFuncItems from "../common/SkillFuncItems";
 import { makeStyles } from "@mui/styles";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const useStyles = makeStyles({
   zeroFlex: {
@@ -58,29 +60,35 @@ export type MyTimeLineProps = {
 
 const MyTimeLine = React.memo(({ items }: MyTimeLineProps) => {
   // width에 현재 브라우저 크기 상태값이 들어 있음 (md, sm, lg 등)
+  const theme = useTheme();
+  const isMobileWidth = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       {/* Mobile 전용 Timeline */}
-      <Timeline
-        sx={{
-          display: { xs: "block", sm: "none" },
-        }}
-        position="right">
-        {items.map(item => (
-          <MyTimeLineItem key={item.id} isMobile {...item} />
-        ))}
-      </Timeline>
+      {isMobileWidth && (
+        <Timeline
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+          position="right">
+          {items.map(item => (
+            <MyTimeLineItem key={item.id} isMobile {...item} />
+          ))}
+        </Timeline>
+      )}
 
       {/* PC 전용 Timeline */}
-      <Timeline
-        sx={{
-          display: { xs: "none", sm: "block" },
-        }}
-        position="alternate">
-        {items.map(item => (
-          <MyTimeLineItem key={item.id} {...item} />
-        ))}
-      </Timeline>
+      {!isMobileWidth && (
+        <Timeline
+          sx={{
+            display: { xs: "none", sm: "block" },
+          }}
+          position="alternate">
+          {items.map(item => (
+            <MyTimeLineItem key={item.id} {...item} />
+          ))}
+        </Timeline>
+      )}
     </>
   );
 });

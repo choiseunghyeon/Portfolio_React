@@ -28,8 +28,8 @@ describe("first", () => {
 
     cy.getBySel("greeting").should("have.length", 1);
 
-    // cy.getBySel("timelineItem").should("have.length", 9);
-    // cy.getBySel("timelineItem").first().contains("백석대학교");
+    cy.getBySel("timelineItem").should("have.length", 9);
+    cy.getBySel("timelineItem").first().contains("백석대학교");
 
     // PROJECT
     cy.getBySel("tab").eq(1).click();
@@ -43,6 +43,6 @@ describe("first", () => {
     cy.getBySel("tab").eq(2).click();
 
     cy.getBySel("skill").should("have.length", 13);
-    cy.getBySel("skill").first().contains("HTML5");
+    cy.getBySel("skill").first().contains("Cypress");
   });
 });
