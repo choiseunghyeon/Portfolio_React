@@ -12,7 +12,7 @@ const DeveloperGitProfile = () => {
     if (data === undefined) {
       throw new Error("data is undefined");
     }
-    return data;
+    return data.data as any;
   });
   return (
     <>
