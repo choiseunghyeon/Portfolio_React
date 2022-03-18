@@ -1,8 +1,7 @@
 import { Octokit } from "@octokit/core";
-import { Base64 } from "js-base64";
-import http from "./http";
-
-const octokit = new Octokit();
+import evironmentJson from "src/environment.json";
+// https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+const octokit = new Octokit({ auth: evironmentJson["personal-access-token"] });
 // https://github.com/dankogai/js-base64
 // https://docs.github.com/en/rest/reference/repos#get-repository-content
 const BASE_URL = "https://api.github.com";

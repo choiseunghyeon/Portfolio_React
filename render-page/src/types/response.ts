@@ -32,3 +32,22 @@ export interface IGitUser {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface Links {
+  self: string;
+  git: string;
+  html: string;
+}
+
+export interface IRepoContent {
+  name: string;
+  path: string;
+  sha: string;
+  size: number;
+  url: string;
+  html_url: string;
+  git_url: string;
+  download_url: string;
+  type: "dir" | "file" | "symlink" | "submodule";
+  _links: Links;
+}

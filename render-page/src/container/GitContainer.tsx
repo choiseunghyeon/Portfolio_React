@@ -1,19 +1,60 @@
-import { Base64 } from "js-base64";
-import { useQuery } from "react-query";
-import { fetchGitRepoContent } from "src/api/http/git";
 import MarkDown from "src/components/git/MarkDown";
-
+import { IRepoContent } from "src/types/response";
+import Chip from "@mui/material/Chip";
+import IconComponent from "src/components/common/IconComponent";
+import { useState } from "react";
+import { useGitRepoFiles, useGitRepoContent } from "src/api/query/customQuery";
 function GitContainer() {
-  const { status, data, error } = useQuery<any>(["git", "repo"], async () => {
-    const data = await fetchGitRepoContent("choiseunghyeon", "vscode-multi-project", "ARTICLE.md");
-    // const data = await fetchGitRepoContent("choiseunghyeon", "TIL", "Daily/21년/2021-03.md");
-    if (data === undefined) {
-      throw new Error("data is undefined");
-    }
-    return Base64.decode(data.data.content) as any;
-  });
+  const [repoFolderPath, setRepoFolderPath] = useState("");
+  const [repoFilePath, setRepoFilePath] = useState("");
 
-  return <>{status === "loading" ? "Loading..." : status === "error" || data === undefined ? <span>Error: ${error}</span> : <MarkDown markdown={data} />}</>;
+  // previous path
+  // "" 공백이면 previousPath 없음
+  // 공백 아니면 split("/").pop 하고 join('/')
+
+  const { data: repoFiles } = useGitRepoFiles(repoFolderPath);
+  const { data: repoContent } = useGitRepoContent(repoFilePath);
+
+  if (repoFiles === undefined || repoContent === undefined) {
+    return null;
+  }
+
+  return (
+    <>
+      <PreviousPath repoFolderPath={repoFolderPath} setRepoFolderPath={setRepoFolderPath} />
+      {repoFiles.map(repoFile => (
+        <FileComp repo={repoFile} setRepoFolderPath={setRepoFolderPath} setRepoFilePath={setRepoFilePath} />
+      ))}
+      <MarkDown markdown={repoContent} />
+    </>
+  );
 }
 
 export default GitContainer;
+
+function FileComp({ repo, setRepoFolderPath, setRepoFilePath }: { repo: IRepoContent; setRepoFolderPath: Function; setRepoFilePath: Function }) {
+  const handlePath = () => {
+    if (repo.type === "file") {
+      setRepoFilePath(repo.path);
+    } else {
+      setRepoFolderPath(repo.path);
+    }
+  };
+  const iconName = repo.type === "file" ? "InsertDriveFile" : "Folder";
+  return <Chip onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
+}
+
+function PreviousPath({ repoFolderPath, setRepoFolderPath }) {
+  if (repoFolderPath === "") return null;
+
+  return (
+    <span
+      onClick={() => {
+        const arr = repoFolderPath.split("/");
+        arr.pop();
+        setRepoFolderPath(arr.join("/"));
+      }}>
+      이전
+    </span>
+  );
+}
