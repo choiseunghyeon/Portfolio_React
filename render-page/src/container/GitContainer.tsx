@@ -1,19 +1,42 @@
+import React, { useCallback, useState } from "react";
 import MarkDown from "src/components/git/MarkDown";
 import { IRepoContent } from "src/types/response";
 import Chip from "@mui/material/Chip";
 import IconComponent from "src/components/common/IconComponent";
-import React, { useState } from "react";
 import { useGitRepoFiles, useGitRepoContent } from "src/api/query/customQuery";
+import { Fab, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { selectCurrentRepository, selectRepositoryNameList } from "src/store/selector";
+import { useDispatch, useSelector } from "react-redux";
+import { changeContentFilePath, changeContentPath, changeCurrentRepositoryName } from "src/store/git";
+
 function GitContainer() {
-  const [repoFolderPath, setRepoFolderPath] = useState("");
-  const [repoFilePath, setRepoFilePath] = useState("");
+  const repositoryNameList = useSelector(selectRepositoryNameList);
+  const { name, contentPath, contentFilePath } = useSelector(selectCurrentRepository);
+  const dispatch = useDispatch();
 
-  // previous path
-  // "" 공백이면 previousPath 없음
-  // 공백 아니면 split("/").pop 하고 join('/')
+  const handleCurrentRepository = useCallback(
+    (event: React.MouseEvent<HTMLElement>, repositoryName: string) => {
+      dispatch(changeCurrentRepositoryName(repositoryName));
+    },
+    [dispatch]
+  );
 
-  const { data: repoFiles } = useGitRepoFiles(repoFolderPath);
-  const { data: repoContent } = useGitRepoContent(repoFilePath);
+  const handleContentPath = useCallback(
+    path => {
+      dispatch(changeContentPath(path));
+    },
+    [dispatch]
+  );
+
+  const handleContentFilePath = useCallback(
+    path => {
+      dispatch(changeContentFilePath(path));
+    },
+    [dispatch]
+  );
+
+  const { data: repoFiles } = useGitRepoFiles(name, contentPath);
+  const { data: repoContent } = useGitRepoContent(name, contentFilePath);
 
   if (repoFiles === undefined || repoContent === undefined) {
     return null;
@@ -21,39 +44,57 @@ function GitContainer() {
 
   return (
     <>
-      <PreviousPath repoFolderPath={repoFolderPath} setRepoFolderPath={setRepoFolderPath} />
+      <PreviousPath contentPath={contentPath} handleContentPath={handleContentPath} />
       {repoFiles.map(repoFile => (
-        <ContentPath key={repoFile.path} repo={repoFile} setRepoFolderPath={setRepoFolderPath} setRepoFilePath={setRepoFilePath} />
+        <ContentPath key={repoFile.path} repo={repoFile} handleContentPath={handleContentPath} handleContentFilePath={handleContentFilePath} />
       ))}
       <MarkDown markdown={repoContent} />
+      <Stack
+        sx={{
+          position: "absolute",
+          bottom: 16,
+          right: 16,
+        }}>
+        <ToggleButtonGroup orientation="vertical" value={name} exclusive onChange={handleCurrentRepository}>
+          {repositoryNameList.map(repositoryName => (
+            <ToggleButton key={repositoryName} value={repositoryName} aria-label={repositoryName}>
+              {repositoryName}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+        <Fab variant="extended">
+          <IconComponent icon="Navigation" />
+          Repositories
+        </Fab>
+      </Stack>
     </>
   );
 }
 
 export default GitContainer;
 
-const ContentPath = ({ repo, setRepoFolderPath, setRepoFilePath }: { repo: IRepoContent; setRepoFolderPath: Function; setRepoFilePath: Function }) => {
+const ContentPath = ({ repo, handleContentPath, handleContentFilePath }: { repo: IRepoContent; handleContentPath: Function; handleContentFilePath: Function }) => {
   const handlePath = () => {
     if (repo.type === "file") {
-      setRepoFilePath(repo.path);
+      handleContentFilePath(repo.path);
     } else {
-      setRepoFolderPath(repo.path);
+      handleContentPath(repo.path);
     }
   };
   const iconName = repo.type === "file" ? "InsertDriveFile" : "Folder";
   return <Chip data-testid="gitContentPath" onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
 };
 
-function PreviousPath({ repoFolderPath, setRepoFolderPath }) {
-  if (repoFolderPath === "") return null;
+function PreviousPath({ contentPath, handleContentPath }: { contentPath: string; handleContentPath: Function }) {
+  if (contentPath === "") return null;
 
   return (
     <span
       data-testid="gitPreviousContentPath"
       onClick={() => {
-        const arr = repoFolderPath.split("/");
+        const arr = contentPath.split("/");
         arr.pop();
-        setRepoFolderPath(arr.join("/"));
+        handleContentPath(arr.join("/"));
       }}>
       이전
     </span>

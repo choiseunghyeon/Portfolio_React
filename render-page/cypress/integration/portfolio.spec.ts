@@ -48,9 +48,9 @@ describe("first", () => {
 
   it.only("GIT REPOSITORY", () => {
     // tab 이동 변경해야 함 순서 상관없이 찾아야함, 이름도 변경될 수 있으므로 id 부여 필요할듯
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/", { fixture: "gitRepoContent.json" });
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/src", { fixture: "gitRepoContentSrc.json" });
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/ARTICLE.md", { fixture: "gitRepoContentFile.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/", { fixture: "git/gitRepoContent.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/src", { fixture: "git/gitRepoContentSrc.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/ARTICLE.md", { fixture: "git/gitRepoContentFile.json" });
     cy.getBySel("tab").last().click();
 
     // api stubbing 해서 데이터 가져오기
