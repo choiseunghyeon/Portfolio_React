@@ -2,7 +2,7 @@ import MarkDown from "src/components/git/MarkDown";
 import { IRepoContent } from "src/types/response";
 import Chip from "@mui/material/Chip";
 import IconComponent from "src/components/common/IconComponent";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useGitRepoFiles, useGitRepoContent } from "src/api/query/customQuery";
 function GitContainer() {
   const [repoFolderPath, setRepoFolderPath] = useState("");
@@ -23,7 +23,7 @@ function GitContainer() {
     <>
       <PreviousPath repoFolderPath={repoFolderPath} setRepoFolderPath={setRepoFolderPath} />
       {repoFiles.map(repoFile => (
-        <FileComp repo={repoFile} setRepoFolderPath={setRepoFolderPath} setRepoFilePath={setRepoFilePath} />
+        <ContentPath key={repoFile.path} repo={repoFile} setRepoFolderPath={setRepoFolderPath} setRepoFilePath={setRepoFilePath} />
       ))}
       <MarkDown markdown={repoContent} />
     </>
@@ -32,7 +32,7 @@ function GitContainer() {
 
 export default GitContainer;
 
-function FileComp({ repo, setRepoFolderPath, setRepoFilePath }: { repo: IRepoContent; setRepoFolderPath: Function; setRepoFilePath: Function }) {
+const ContentPath = ({ repo, setRepoFolderPath, setRepoFilePath }: { repo: IRepoContent; setRepoFolderPath: Function; setRepoFilePath: Function }) => {
   const handlePath = () => {
     if (repo.type === "file") {
       setRepoFilePath(repo.path);
@@ -41,14 +41,15 @@ function FileComp({ repo, setRepoFolderPath, setRepoFilePath }: { repo: IRepoCon
     }
   };
   const iconName = repo.type === "file" ? "InsertDriveFile" : "Folder";
-  return <Chip onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
-}
+  return <Chip data-testid="gitContentPath" onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
+};
 
 function PreviousPath({ repoFolderPath, setRepoFolderPath }) {
   if (repoFolderPath === "") return null;
 
   return (
     <span
+      data-testid="gitPreviousContentPath"
       onClick={() => {
         const arr = repoFolderPath.split("/");
         arr.pop();

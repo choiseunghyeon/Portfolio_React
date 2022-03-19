@@ -12,7 +12,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "noImplicitAny": false,
     "jsx": "react-jsx",
@@ -22,5 +22,5 @@
       "asset": ["src/asset"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "cypress"]
 }
