@@ -11,9 +11,6 @@ const initialState = {
   timeline: timeLineItems,
   project: projectInfo,
   skill: skillsInfo,
-  git: {
-    username: "choiseunghyeon",
-  },
 };
 
 const app = createSlice({
