@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Daily",
+    "path": "Daily",
+    "sha": "2919f915c4e73ea5702aeaad74549ea4e135cd6c",
+    "size": 0,
+    "url": "https://api.github.com/repos/choiseunghyeon/TIL/contents/Daily?ref=main",
+    "html_url": "https://github.com/choiseunghyeon/TIL/tree/main/Daily",
+    "git_url": "https://api.github.com/repos/choiseunghyeon/TIL/git/trees/2919f915c4e73ea5702aeaad74549ea4e135cd6c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/choiseunghyeon/TIL/contents/Daily?ref=main",
+      "git": "https://api.github.com/repos/choiseunghyeon/TIL/git/trees/2919f915c4e73ea5702aeaad74549ea4e135cd6c",
+      "html": "https://github.com/choiseunghyeon/TIL/tree/main/Daily"
+    }
+  },
+  {
+    "name": "Redux",
+    "path": "Redux",
+    "sha": "fad29ebb054f6c59e5d8ba97eaf209ef8496e3fa",
+    "size": 0,
+    "url": "https://api.github.com/repos/choiseunghyeon/TIL/contents/Redux?ref=main",
+    "html_url": "https://github.com/choiseunghyeon/TIL/tree/main/Redux",
+    "git_url": "https://api.github.com/repos/choiseunghyeon/TIL/git/trees/fad29ebb054f6c59e5d8ba97eaf209ef8496e3fa",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/choiseunghyeon/TIL/contents/Redux?ref=main",
+      "git": "https://api.github.com/repos/choiseunghyeon/TIL/git/trees/fad29ebb054f6c59e5d8ba97eaf209ef8496e3fa",
+      "html": "https://github.com/choiseunghyeon/TIL/tree/main/Redux"
+    }
+  }
+]

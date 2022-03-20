@@ -39,6 +39,7 @@ export interface Links {
   html: string;
 }
 
+export type RepoContentType = "dir" | "file" | "symlink" | "submodule";
 export interface IRepoContent {
   name: string;
   path: string;
@@ -48,6 +49,21 @@ export interface IRepoContent {
   html_url: string;
   git_url: string;
   download_url: string;
-  type: "dir" | "file" | "symlink" | "submodule";
+  type: RepoContentType;
+  _links: Links;
+}
+
+export interface IRepoFileContent {
+  name: string;
+  path: string;
+  sha: string;
+  size: number;
+  url: string;
+  html_url: string;
+  git_url: string;
+  download_url: string;
+  type: RepoContentType;
+  content: string;
+  encoding: string;
   _links: Links;
 }

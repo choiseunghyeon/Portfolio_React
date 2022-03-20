@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import IconComponent from "../common/IconComponent";
 
 const DeveloperGitProfile = () => {
-  const username = useSelector(state => state.app.git.username);
+  const username = useSelector(state => state.git.username);
   const { status, data, error } = useQuery<IGitUser>(["git", "users", username], async () => {
     const data = await fetchGitUser(username);
     if (data === undefined) {

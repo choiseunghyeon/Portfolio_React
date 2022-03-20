@@ -48,16 +48,20 @@ describe("first", () => {
 
   it.only("GIT REPOSITORY", () => {
     // tab 이동 변경해야 함 순서 상관없이 찾아야함, 이름도 변경될 수 있으므로 id 부여 필요할듯
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/", { fixture: "git/gitRepoContent.json" });
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/src", { fixture: "git/gitRepoContentSrc.json" });
-    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/ARTICLE.md", { fixture: "git/gitRepoContentFile.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/", { fixture: "git/MultiProject/gitRepoContent.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/src", { fixture: "git/MultiProject/gitRepoContentSrc.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/ARTICLE.md", { fixture: "git/MultiProject/gitRepoContentFile.json" });
+
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/TIL/contents/", { fixture: "git/TIL/gitRepoContent.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/TIL/contents/Redux", { fixture: "git/TIL/gitRepoContentRedux.json" });
+    cy.intercept("https://api.github.com/repos/choiseunghyeon/TIL/contents/Redux/reselect.md", { fixture: "git/TIL/gitRepoContentFile.json" });
+
     cy.getBySel("tab").last().click();
 
-    // api stubbing 해서 데이터 가져오기
-    // 처음 목록 가져오기
-    // 목록 클릭하면 다음 목록
-    // 이전 누르면 이전에 가져온 목록 가져오기
-    // file 누르면 렌더링 제대로 되는지 확인
+    // vscode-multi-project Repository 탐색 테스트
+    cy.getBySel("gitRepository").contains("vscode-multi-project");
+    cy.getBySel("contentPathLocation").should("have.length", 1).contains("ROOT");
+
     cy.getBySel("gitContentPath").within(items => {
       expect(items).to.have.length(3);
       expect(items[0]).to.have.contain("ARTICLE.md");
@@ -66,13 +70,18 @@ describe("first", () => {
     });
 
     cy.getBySel("gitContentPath").contains("src").click();
+    cy.getBySel("contentPathLocation").within(items => {
+      expect(items).to.have.length(2);
+      expect(items[0]).to.have.contain("ROOT");
+      expect(items[1]).to.have.contain("src");
+    });
     cy.getBySel("gitContentPath").within(items => {
       expect(items).to.have.length(2);
       expect(items[0]).to.have.contain("explorer");
       expect(items[1]).to.have.contain("extension.ts");
     });
 
-    cy.getBySel("gitPreviousContentPath").contains("이전").click();
+    cy.getBySel("contentPathLocation").first().click();
     cy.getBySel("gitContentPath").within(items => {
       expect(items).to.have.length(3);
       expect(items[0]).to.have.contain("ARTICLE.md");
@@ -81,6 +90,41 @@ describe("first", () => {
     });
 
     cy.getBySel("gitContentPath").contains("ARTICLE.md").click();
+    cy.getBySel("markdown").contains("Multi Project Extension 제작 회고");
+
+    // TIL Repository 변경 후 탐색 테스트
+    cy.getBySel("gitRepository").click();
+    cy.getBySel("gitRepositoryMenu").contains("TIL").click();
+
+    cy.getBySel("gitContentPath").within(items => {
+      expect(items).to.have.length(2);
+      expect(items[0]).to.have.contain("Daily");
+      expect(items[1]).to.have.contain("Redux");
+    });
+    cy.getBySel("gitContentPath").contains("Redux").click();
+    cy.getBySel("gitContentPath").within(items => {
+      expect(items).to.have.length(1);
+      expect(items[0]).to.have.contain("reselect.md");
+    });
+    cy.getBySel("gitContentPath").contains("reselect.md").click();
+    cy.getBySel("markdown").contains("Reselect");
+
+    // 이전 vscode-multi-project Repository 정보 기억하고 있는지 테스트
+    cy.getBySel("gitRepository").click();
+    cy.getBySel("gitRepositoryMenu").contains("vscode-multi-project").click();
+
+    cy.getBySel("gitContentPath").within(items => {
+      expect(items).to.have.length(3);
+      expect(items[0]).to.have.contain("ARTICLE.md");
+      expect(items[1]).to.have.contain("README.md");
+      expect(items[2]).to.have.contain("src");
+    });
+
+    cy.getBySel("contentPathLocation").within(items => {
+      expect(items).to.have.length(2);
+      expect(items[0]).to.have.contain("ROOT");
+      expect(items[1]).to.have.contain("ARTICLE.md");
+    });
     cy.getBySel("markdown").contains("Multi Project Extension 제작 회고");
   });
 });

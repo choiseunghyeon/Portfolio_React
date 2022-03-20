@@ -1,102 +1,120 @@
 import React, { useCallback, useState } from "react";
-import MarkDown from "src/components/git/MarkDown";
 import { IRepoContent } from "src/types/response";
 import Chip from "@mui/material/Chip";
 import IconComponent from "src/components/common/IconComponent";
-import { useGitRepoFiles, useGitRepoContent } from "src/api/query/customQuery";
-import { Fab, Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { useGitRepoFiles, useGitRepoContent, useGitRepositoryContent } from "src/api/query/customQuery";
+import { Breadcrumbs, Button, Grid, Menu, MenuItem } from "@mui/material";
 import { selectCurrentRepository, selectRepositoryNameList } from "src/store/selector";
 import { useDispatch, useSelector } from "react-redux";
-import { changeContentFilePath, changeContentPath, changeCurrentRepositoryName } from "src/store/git";
+import { changeCurrentRepositoryName, changeSelectedContentPath } from "src/store/git";
+import FileViewer from "src/components/git/FileViewer";
 
 function GitContainer() {
   const repositoryNameList = useSelector(selectRepositoryNameList);
-  const { name, contentPath, contentFilePath } = useSelector(selectCurrentRepository);
+  const { name, contentFolderPath, contentFilePath, selectedContentPath } = useSelector(selectCurrentRepository);
   const dispatch = useDispatch();
 
   const handleCurrentRepository = useCallback(
-    (event: React.MouseEvent<HTMLElement>, repositoryName: string) => {
+    (repositoryName: string) => {
       dispatch(changeCurrentRepositoryName(repositoryName));
     },
     [dispatch]
   );
 
   const handleContentPath = useCallback(
-    path => {
-      dispatch(changeContentPath(path));
+    (path, type) => {
+      dispatch(changeSelectedContentPath({ path, type }));
     },
     [dispatch]
   );
 
-  const handleContentFilePath = useCallback(
-    path => {
-      dispatch(changeContentFilePath(path));
-    },
-    [dispatch]
-  );
-
-  const { data: repoFiles } = useGitRepoFiles(name, contentPath);
-  const { data: repoContent } = useGitRepoContent(name, contentFilePath);
-
-  if (repoFiles === undefined || repoContent === undefined) {
-    return null;
-  }
+  const { data: contentPathList } = useGitRepoFiles(name, contentFolderPath);
+  const { data: contentPath } = useGitRepoContent(name, contentFilePath);
 
   return (
     <>
-      <PreviousPath contentPath={contentPath} handleContentPath={handleContentPath} />
-      {repoFiles.map(repoFile => (
-        <ContentPath key={repoFile.path} repo={repoFile} handleContentPath={handleContentPath} handleContentFilePath={handleContentFilePath} />
-      ))}
-      <MarkDown markdown={repoContent} />
-      <Stack
-        sx={{
-          position: "absolute",
-          bottom: 16,
-          right: 16,
-        }}>
-        <ToggleButtonGroup orientation="vertical" value={name} exclusive onChange={handleCurrentRepository}>
-          {repositoryNameList.map(repositoryName => (
-            <ToggleButton key={repositoryName} value={repositoryName} aria-label={repositoryName}>
-              {repositoryName}
-            </ToggleButton>
+      <RepositoryMenu repositoryNameList={repositoryNameList} handleCurrentRepository={handleCurrentRepository} />
+      <Grid container spacing={0.5}>
+        <Grid item xs={12}>
+          <ContentLocation contentPath={selectedContentPath} handleContentPath={handleContentPath} />
+        </Grid>
+        {contentPathList &&
+          contentPathList.map(repoFile => (
+            <Grid item>
+              <ContentPath key={repoFile.path} repo={repoFile} handleContentPath={handleContentPath} />
+            </Grid>
           ))}
-        </ToggleButtonGroup>
-        <Fab variant="extended">
-          <IconComponent icon="Navigation" />
-          Repositories
-        </Fab>
-      </Stack>
+      </Grid>
+      {contentPath && <FileViewer fileName={contentPath.name} fileContent={contentPath.content} />}
     </>
   );
 }
 
 export default GitContainer;
 
-const ContentPath = ({ repo, handleContentPath, handleContentFilePath }: { repo: IRepoContent; handleContentPath: Function; handleContentFilePath: Function }) => {
+function ContentLocation({ contentPath, handleContentPath }: { contentPath: string; handleContentPath: Function }) {
+  const pathList = contentPath.split("/");
+  return (
+    <Breadcrumbs aria-label="breadcrumb">
+      <Button data-testid="contentPathLocation" key={123} variant="text" onClick={() => handleContentPath("")}>
+        ROOT
+      </Button>
+      {pathList.map((path, index) => {
+        if (path === "") return null;
+        return (
+          <Button data-testid="contentPathLocation" key={index} variant="text" onClick={() => handleContentPath(pathList.slice(0, index + 1).join("/"))}>
+            {path}
+          </Button>
+        );
+      })}
+    </Breadcrumbs>
+  );
+}
+
+const ContentPath = ({ repo, handleContentPath }: { repo: IRepoContent; handleContentPath: Function }) => {
   const handlePath = () => {
-    if (repo.type === "file") {
-      handleContentFilePath(repo.path);
-    } else {
-      handleContentPath(repo.path);
-    }
+    handleContentPath(repo.path, repo.type);
   };
   const iconName = repo.type === "file" ? "InsertDriveFile" : "Folder";
-  return <Chip data-testid="gitContentPath" onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
+  return <Chip data-testid="gitContentPath" sx={{ padding: "10px" }} onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
 };
 
-function PreviousPath({ contentPath, handleContentPath }: { contentPath: string; handleContentPath: Function }) {
-  if (contentPath === "") return null;
+function RepositoryMenu({ repositoryNameList, handleCurrentRepository }) {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const open = Boolean(anchorEl);
+  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number, selectedRepositoryName: string) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
+    handleCurrentRepository(selectedRepositoryName);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <span
-      data-testid="gitPreviousContentPath"
-      onClick={() => {
-        const arr = contentPath.split("/");
-        arr.pop();
-        handleContentPath(arr.join("/"));
-      }}>
-      이전
-    </span>
+    <div>
+      <Button
+        data-testid="gitRepository"
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClickListItem}>
+        현재 선택된 Repository: {repositoryNameList[selectedIndex]}
+      </Button>
+      <Menu id="lock-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
+        {repositoryNameList.map((repositoryName, index) => (
+          <MenuItem data-testid="gitRepositoryMenu" key={repositoryName} selected={index === selectedIndex} onClick={event => handleMenuItemClick(event, index, repositoryName)}>
+            {repositoryName}
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
   );
 }
