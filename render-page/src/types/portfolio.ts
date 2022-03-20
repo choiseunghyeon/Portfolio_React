@@ -45,6 +45,11 @@ export type RouterPath = {
   skillsPath: string[];
 };
 
+export type GitInfo = {
+  username: string;
+  repositories: string[];
+};
+
 export interface IContainer {
   type: string;
   title: string;

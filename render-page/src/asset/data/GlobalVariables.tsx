@@ -1,4 +1,4 @@
-import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer } from "../../types/portfolio";
+import { DeveloperInfo, ProejctInfo, TimeLine, SkillsInfo, IContainer, GitInfo } from "../../types/portfolio";
 
 // export const LOCAL_IMAGE_PATH = "/Portfolio_React/static/images/";
 
@@ -235,6 +235,11 @@ export const timeLineItems: TimeLine[] = [
     icon: "Code",
   },
 ];
+
+export const gitInfo: GitInfo = {
+  username: "choiseunghyeon",
+  repositories: ["vscode-multi-project", "TIL"],
+};
 
 export const containerMapperList: IContainer[] = [
   {

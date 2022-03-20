@@ -1,5 +1,6 @@
 import { createSlice, createEntityAdapter, PayloadAction } from "@reduxjs/toolkit";
 import produce from "immer";
+import { gitInfo } from "src/asset/data/GlobalVariables";
 import { RepoContentType } from "src/types/response";
 
 interface IChangeSelectedContentPath {
@@ -8,12 +9,9 @@ interface IChangeSelectedContentPath {
 }
 
 const initialState = {
-  username: "choiseunghyeon",
-  repositories: [
-    { name: "vscode-multi-project", selectedContentPath: "", contentFolderPath: "", contentFilePath: "" },
-    { name: "TIL", selectedContentPath: "", contentFolderPath: "", contentFilePath: "" },
-  ],
-  currentRepositoryName: "vscode-multi-project",
+  username: gitInfo.username,
+  repositories: gitInfo.repositories.map(repositoryName => ({ name: repositoryName, selectedContentPath: "", contentFolderPath: "", contentFilePath: "" })),
+  currentRepositoryName: gitInfo.repositories[0],
 };
 
 const git = createSlice({
@@ -45,5 +43,3 @@ const git = createSlice({
 export const { changeCurrentRepositoryName, changeSelectedContentPath } = git.actions;
 
 export const gitReducer = git.reducer;
-
-createEntityAdapter({});

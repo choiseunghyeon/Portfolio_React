@@ -46,7 +46,7 @@ describe("first", () => {
     cy.getBySel("skill").first().contains("Cypress");
   });
 
-  it.only("GIT REPOSITORY", () => {
+  it("GIT REPOSITORY", () => {
     // tab 이동 변경해야 함 순서 상관없이 찾아야함, 이름도 변경될 수 있으므로 id 부여 필요할듯
     cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/", { fixture: "git/MultiProject/gitRepoContent.json" });
     cy.intercept("https://api.github.com/repos/choiseunghyeon/vscode-multi-project/contents/src", { fixture: "git/MultiProject/gitRepoContentSrc.json" });
@@ -60,7 +60,7 @@ describe("first", () => {
 
     // vscode-multi-project Repository 탐색 테스트
     cy.getBySel("gitRepository").contains("vscode-multi-project");
-    cy.getBySel("contentPathLocation").should("have.length", 1).contains("ROOT");
+    cy.getBySel("gitPartialContentPath").should("have.length", 1).contains("ROOT");
 
     cy.getBySel("gitContentPath").within(items => {
       expect(items).to.have.length(3);
@@ -70,7 +70,7 @@ describe("first", () => {
     });
 
     cy.getBySel("gitContentPath").contains("src").click();
-    cy.getBySel("contentPathLocation").within(items => {
+    cy.getBySel("gitPartialContentPath").within(items => {
       expect(items).to.have.length(2);
       expect(items[0]).to.have.contain("ROOT");
       expect(items[1]).to.have.contain("src");
@@ -81,7 +81,7 @@ describe("first", () => {
       expect(items[1]).to.have.contain("extension.ts");
     });
 
-    cy.getBySel("contentPathLocation").first().click();
+    cy.getBySel("gitPartialContentPath").first().click();
     cy.getBySel("gitContentPath").within(items => {
       expect(items).to.have.length(3);
       expect(items[0]).to.have.contain("ARTICLE.md");
@@ -120,7 +120,7 @@ describe("first", () => {
       expect(items[2]).to.have.contain("src");
     });
 
-    cy.getBySel("contentPathLocation").within(items => {
+    cy.getBySel("gitPartialContentPath").within(items => {
       expect(items).to.have.length(2);
       expect(items[0]).to.have.contain("ROOT");
       expect(items[1]).to.have.contain("ARTICLE.md");
