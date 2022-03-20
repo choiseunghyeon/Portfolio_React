@@ -41,7 +41,7 @@ function GitContainer() {
         {contentPathList &&
           contentPathList.map(repoFile => (
             <Grid item>
-              <ContentMember key={repoFile.path} repo={repoFile} handleContentPath={handleContentPath} />
+              <ContentMember key={repoFile.path} name={repoFile.name} path={repoFile.path} type={repoFile.type} handleContentPath={handleContentPath} />
             </Grid>
           ))}
       </Grid>

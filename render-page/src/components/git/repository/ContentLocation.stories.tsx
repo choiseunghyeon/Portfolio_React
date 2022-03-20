@@ -1,18 +1,27 @@
-import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import ProjectCardItem from "./ProjectCardItem";
-import { projectCardItemStub } from "./__test__/stub";
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import ContentLocation from "./ContentLocation";
+
 export default {
-  title: "ProjectCardItem",
-  component: ProjectCardItem,
-} as ComponentMeta<typeof ProjectCardItem>;
+  title: "ContentLocation",
+  component: ContentLocation,
+} as ComponentMeta<typeof ContentLocation>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof ProjectCardItem> = args => <ProjectCardItem {...args} />;
+const Template: ComponentStory<typeof ContentLocation> = args => <ContentLocation {...args} />;
 
-export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  ...projectCardItemStub,
+export const RootLocation = Template.bind({});
+RootLocation.args = {
+  contentPath: "",
+  handleContentPath: () => {},
+};
+
+export const FolderLocation = Template.bind({});
+FolderLocation.args = {
+  ...RootLocation.args,
+  contentPath: "TIL/contents/Redux",
+};
+
+export const FileLocation = Template.bind({});
+FileLocation.args = {
+  ...RootLocation.args,
+  contentPath: "TIL/contents/Redux/reselect.md",
 };

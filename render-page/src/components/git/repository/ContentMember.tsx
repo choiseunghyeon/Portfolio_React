@@ -1,18 +1,20 @@
 import { Chip } from "@mui/material";
 import IconComponent from "src/components/common/IconComponent";
-import { IRepoContent } from "src/types/response";
+import { RepoContentType } from "src/types/response";
 
 interface IContentMemberProps {
-  repo: IRepoContent;
+  name: string;
+  path: string;
+  type: RepoContentType;
   handleContentPath: Function;
 }
 
-const ContentMember = ({ repo, handleContentPath }: IContentMemberProps) => {
+const ContentMember = ({ name, path, type, handleContentPath }: IContentMemberProps) => {
   const handlePath = () => {
-    handleContentPath(repo.path, repo.type);
+    handleContentPath(path, type);
   };
-  const iconName = repo.type === "file" ? "InsertDriveFile" : "Folder";
-  return <Chip data-testid="gitContentPath" sx={{ padding: "10px" }} onClick={handlePath} variant="outlined" label={repo.name} icon={<IconComponent icon={iconName} />} />;
+  const iconName = type === "file" ? "InsertDriveFile" : "Folder";
+  return <Chip data-testid="gitContentPath" sx={{ padding: "10px" }} onClick={handlePath} variant="outlined" label={name} icon={<IconComponent icon={iconName} />} />;
 };
 
 export default ContentMember;
