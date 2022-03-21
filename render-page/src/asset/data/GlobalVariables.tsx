@@ -257,9 +257,9 @@ export const containerMapperList: IContainer[] = [
     title: "SKILLS",
     containerName: "SkillContainer",
   },
-  {
-    type: "git",
-    title: "GIT REPOS",
-    containerName: "GitContainer",
-  },
+  // {
+  //   type: "git",
+  //   title: "GIT REPOS",
+  //   containerName: "GitContainer",
+  // },
 ];

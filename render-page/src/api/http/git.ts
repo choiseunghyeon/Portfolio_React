@@ -1,10 +1,8 @@
 import { Octokit } from "@octokit/core";
-import evironmentJson from "src/environment.json";
 // https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-const octokit = new Octokit({ auth: evironmentJson["personal-access-token"] });
+const octokit = new Octokit({ auth: "111" });
 // https://github.com/dankogai/js-base64
 // https://docs.github.com/en/rest/reference/repos#get-repository-content
-const BASE_URL = "https://api.github.com";
 
 export const fetchGitUser = async (username: string) => {
   const result = await octokit.request("GET /users/{username}", {
